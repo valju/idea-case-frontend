@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 //import { fetchTestCategories as oldOne } from '../../models/Test';
-import {fetchAllCategories, deleteCategory} from '../../actions/category';
-import CategoryListItem from './CategoryListItem';
-import { connect } from 'react-redux';
+import { fetchAllCategories, deleteCategory } from "../../actions/category";
+import CategoryListItem from "./CategoryListItem";
+import { connect } from "react-redux";
 
 class CategoryList extends Component {
   /*
@@ -21,14 +21,15 @@ class CategoryList extends Component {
     return (
       <div>
         <h4>List of Categories</h4>
-        <ol>
-          {
-            this.props.categories.categoryList.map((item) =>
-              <CategoryListItem key={item.id} item={item}
-               deleteCategoryClicked={this.props.deleteCategoryLocal} />
-            )
-          }
-        </ol>
+        <ul>
+          {this.props.categories.categoryList.map(item => (
+            <CategoryListItem
+              key={item.id}
+              item={item}
+              deleteCategoryClicked={this.props.deleteCategoryLocal}
+            />
+          ))}
+        </ul>
       </div>
     );
   }
@@ -38,16 +39,19 @@ const mapDispatchToProps = dispatch => ({
   categoriesFetchAll: () => {
     dispatch(fetchAllCategories());
   },
-  deleteCategoryLocal: (id) => {
-    dispatch(deleteCategory(id))
+  deleteCategoryLocal: id => {
+    dispatch(deleteCategory(id));
   }
 });
 
 const mapStateToProps = state => ({
-  categories: state.categories,
+  categories: state.categories
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CategoryList);
 
 // What happens with last line? Kind of this:
 // export default prepareToConnect(mapStateToProps,mapDispatchToProps)(CategoryList);

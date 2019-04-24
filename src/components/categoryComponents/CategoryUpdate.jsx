@@ -1,13 +1,13 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { addCategory } from "../../actions/category";
-
-class CategoryAdd extends Component {
+import { updateCategory } from "../../actions/category";
+class CategoryUpdate extends Component {
   constructor(props) {
     super(props);
     this.state = {
       newCategoryObject: {
-        id: null,
+        id: this.props.categoryId,
         name: null,
         description: null,
         budgetLimit: null
@@ -22,22 +22,21 @@ class CategoryAdd extends Component {
       }
     });
   };
-  addCategoryButtonClicked = () => {
+  editCategoryButtonClicked = () => {
     const category = this.state.newCategoryObject;
     category.id = Number(category.id); // id to Number
     category.budgetLimit = Number(category.budgetLimit);
-
-    this.props.addCategoryLocal(category);
+    this.props.updateCategoryLocal(category);
 
     this.setState({
       newCategoryObject: { id: "", name: "", budgetLimit: "" }
     });
-    // this.props.addCategoryLocal(this.state.newCategoryObject);   // Other way
+    this.props.history.push("/Categories");
   };
-  render = () => {
+  render() {
     return (
       <div>
-        <h4>New Category</h4>
+        <h4>Edit Category {this.props.location.state.categoryPassed.name}</h4>
         <p>
           Name:{" "}
           <input id="name" type="text" onChange={this.inputFieldValueChanged} />
@@ -48,7 +47,6 @@ class CategoryAdd extends Component {
             type="text"
             onChange={this.inputFieldValueChanged}
           />
-          <br />
           Budget limit:{" "}
           <input
             id="budgetLimit"
@@ -56,22 +54,26 @@ class CategoryAdd extends Component {
             onChange={this.inputFieldValueChanged}
           />
           <br />
-          <button type="button" onClick={this.addCategoryButtonClicked}>
-            ADD NEW CATEGORY
+          <button type="button" onClick={this.editCategoryButtonClicked}>
+            EDIT CATEGORY
           </button>
+        </p>
+
+        <p>
+          <Link to="/Categories">Back to all categories</Link>
         </p>
       </div>
     );
-  };
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
-  addCategoryLocal: category => {
-    dispatch(addCategory(category));
+  updateCategoryLocal: category => {
+    dispatch(updateCategory(category));
   }
 });
 
 export default connect(
   null,
   mapDispatchToProps
-)(CategoryAdd);
+)(withRouter(CategoryUpdate));
