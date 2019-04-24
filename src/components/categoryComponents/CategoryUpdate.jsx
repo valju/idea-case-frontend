@@ -47,6 +47,7 @@ class CategoryUpdate extends Component {
             type="text"
             onChange={this.inputFieldValueChanged}
           />
+          <br />
           Budget limit:{" "}
           <input
             id="budgetLimit"
