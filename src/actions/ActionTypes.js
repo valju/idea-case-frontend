@@ -1,6 +1,8 @@
 // An object that know all the ALLOWED ACTION TYPES
 // ~ contract or standard
+
 const ActionTypes = {
+    
     // Category
     CATEGORIES_ALL_REQ: 'CATEGORIES_ALL_REQ',
     CATEGORIES_ALL_OK:  'CATEGORIES_ALL_OK',
