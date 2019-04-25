@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MemberListItem from './MemberListItem';
-import { fetchAllmembers, deleteMember } from '../../actions/member';
+import { fetchAllmembers} from '../../actions/member';
 
 class MemberList extends Component {
   /*
@@ -36,10 +36,8 @@ class MemberList extends Component {
 const mapDispatchToProps = dispatch => ({
   membersFetchAll: () => {
     dispatch(fetchAllmembers());
-  },
-  deleteMemberLocal: (id) => {
-    dispatch(deleteMember(id))
   }
+ 
 });
 
 const mapStateToProps = state => ({

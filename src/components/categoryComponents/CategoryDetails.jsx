@@ -1,42 +1,39 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 import CategoryItem from './CategoryItem';
-import {getCategory} from '../../actions/category';
-import {Link} from 'react-router-dom';
+import { getCategory } from '../../actions/category';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class CategoryDetails extends Component {
-  // componentDidMount = () => {
-  //      // }
 
-  render = () => {
-    //this.props.categoryGetById(this.props.categoryId);    
+  componentDidMount() {
+    this.props.categoryGetById(this.props.id);
+  }
 
-    return (  
+  render() {
+    return (
       <div>
-        <h2>One Category</h2>
-        { (this.props.categories.categoryCurrent === null) 
-                ?
-            <CategoryItem item={{name:"Hard-coded placeholder", budgetLimit:12345}} />
-                :
-            <CategoryItem item={this.props.categories.categoryCurrent} />
+        {
+          (this.props.categories.categoryCurrent === null)
+            ?
+            <p>Waiting server response. Activity indicator could go here.</p>
+            :
+            <CategoryItem item={this.props.categories.categoryCurrent[0]} />
         }
-
-        <p><Link to="/Categories">Back to all categories</Link></p>
+        <p><Link to="/categories">Back</Link></p>
       </div>
     );
   }
 }
 
-
-// const mapDispatchToProps = dispatch => ({
-//   categoryGetById: (id) => {
-//     dispatch(getCategory(id));
-//   },
-// });
+const mapDispatchToProps = dispatch => ({
+  categoryGetById: (id) => {
+    dispatch(getCategory(id));
+  },
+});
 
 const mapStateToProps = state => ({
   categories: state.categories,
 });
 
-export default connect(mapStateToProps, null)(CategoryDetails);
-
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryDetails);
