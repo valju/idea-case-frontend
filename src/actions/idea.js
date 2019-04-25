@@ -1,39 +1,39 @@
 import ActionTypes from './ActionTypes';
-//import {fetchTestCategories} from '../models/Test';
+//import {fetchTestIdeas} from '../models/Test';
 import axios from 'axios';
 import {API_ROOT} from '../constants/AppConstants';
 
 // ACTION CREATORS (Action object creator functions)
 // ~ standard and only way to create each action object
-export const categoriesAll_REQ = () => ({
-    type: ActionTypes.CATEGORIES_ALL_REQ,
+export const ideasAll_REQ = () => ({
+    type: ActionTypes.IDEAS_ALL_REQ,
 });
-export const categoriesAll_OK = (categoryList) => ({
-    type: ActionTypes.CATEGORIES_ALL_OK,
-    categoryList: categoryList
+export const ideasAll_OK = (ideaList) => ({
+    type: ActionTypes.IDEAS_ALL_OK,
+    ideaList: ideaList
 });
-export const categoriesAll_X = () => ({
-    type: ActionTypes.CATEGORIES_ALL_X,
+export const ideasAll_X = () => ({
+    type: ActionTypes.IDEAS_ALL_X,
 });
 
 // Helper function, real action function?
-export function fetchAllCategories() { 
+export function fetchAllIdeas() { 
     return async (dispatch, getState) => {
-        dispatch(categoriesAll_REQ());
+        dispatch(ideasAll_REQ());
 
-        //const categoryList = //fetchTestCategories();  // from mock "Back-end"
+        //const ideaList = //fetchTestIdeas();  // from mock "Back-end"
         const ajaxRequest = {
             method:'get',
-            url: API_ROOT + '/category/all'
+            url: API_ROOT + '/idea/all'
         };
         
         axios(ajaxRequest)
         .then((response) => {
-            dispatch(categoriesAll_OK(response.data));
+            dispatch(ideasAll_OK(response.data));
         })
         .catch((error)=> {
             console.error("Error: "+ error);
-            dispatch(categoriesAll_X());
+            dispatch(ideasAll_X());
         })
         .then( () => {
                 return {type:null};  // 'Empty' action object
@@ -44,38 +44,38 @@ export function fetchAllCategories() {
 
 // Same with other actions...
 // Action object creator functions
-export const categoryAdd_REQ = () => ({
-    type: ActionTypes.CATEGORY_ADD_REQ,
+export const ideaAdd_REQ = () => ({
+    type: ActionTypes.IDEA_ADD_REQ,
 });
-export const categoryAdd_OK = () => ({
-    type: ActionTypes.CATEGORY_ADD_OK,
+export const ideaAdd_OK = () => ({
+    type: ActionTypes.IDEA_ADD_OK,
 });
-export const categoryAdd_X = () => ({
-    type: ActionTypes.CATEGORY_ADD_X,
+export const ideaAdd_X = () => ({
+    type: ActionTypes.IDEA_ADD_X,
 });
 
 // Helper function, real action function?
-export function addCategory(category) { 
+export function addIdea(idea) { 
     return async (dispatch, getState) => {
-        dispatch(categoryAdd_REQ());
-        console.dir(category);
+        dispatch(ideaAdd_REQ());
+        console.dir(idea);
         
         // Here would be some async AJAX call with await...
         // ... or some promises or so
         const ajaxRequest = {
             method:'post',
-            url: API_ROOT + '/category',
-            data: category,
+            url: API_ROOT + '/idea',
+            data: idea,
         };
 
         axios(ajaxRequest)
         .then((response) => {
-            dispatch(categoryAdd_OK());
-            dispatch(fetchAllCategories());
+            dispatch(ideaAdd_OK());
+            dispatch(fetchAllIdeas());
         })
         .catch((error)=>{
             console.error("Error: " +error);
-            dispatch(categoryAdd_X());
+            dispatch(ideaAdd_X());
         })
         .then( () => {
             return {type:null};  // 'Empty' action object
@@ -83,30 +83,30 @@ export function addCategory(category) {
     }
 };
 
-// deleteCategory coming later
+// deleteIdea coming later
 // Action object creator functions
-export const categoryDelete_REQ = (id) => ({
-    type: ActionTypes.CATEGORY_DELETE_REQ,
+export const ideaDelete_REQ = (id) => ({
+    type: ActionTypes.IDEA_DELETE_REQ,
     id:id,
 });
-export const categoryDelete_OK = () => ({
-    type: ActionTypes.CATEGORY_DELETE_OK,
+export const ideaDelete_OK = () => ({
+    type: ActionTypes.IDEA_DELETE_OK,
 });
-export const categoryDelete_X = () => ({
-    type: ActionTypes.CATEGORY_DELETE_X,
+export const ideaDelete_X = () => ({
+    type: ActionTypes.IDEA_DELETE_X,
 });
 
 // Helper function, real action function?
-export function deleteCategory(id) { 
+export function deleteIdea(id) { 
     return async (dispatch, getState) => {
-        dispatch(categoryDelete_REQ(id));
+        dispatch(ideaDelete_REQ(id));
         console.dir("Delete by this id: "+id);
         
         // Here would be some async AJAX call with await...
         // ... or some promises or so
         const ajaxRequest = {
             method:'delete',
-            url: API_ROOT + '/category/',
+            url: API_ROOT + '/idea/',
             
             params: {
                 id:id,
@@ -116,12 +116,12 @@ export function deleteCategory(id) {
 
         axios(ajaxRequest)
         .then((response) => {
-            dispatch(categoryDelete_OK());
-            dispatch(fetchAllCategories());
+            dispatch(ideaDelete_OK());
+            dispatch(fetchAllIdeas());
         })
         .catch((error)=>{
             console.error("Error: " +error);
-            dispatch(categoryDelete_X());
+            dispatch(ideaDelete_X());
         })
         .then( () => {
             return {type:null};  // 'Empty' action object
@@ -130,38 +130,38 @@ export function deleteCategory(id) {
 };
 
 // Action object creator functions
-export const categoryGetById_REQ = () => ({
-    type: ActionTypes.CATEGORY_GETBYID_REQ,
+export const ideaGetById_REQ = () => ({
+    type: ActionTypes.IDEA_GETBYID_REQ,
 });
-export const categoryGetById_OK = (category) => ({
-    type: ActionTypes.CATEGORY_GETBYID_OK,
-    category: category,
+export const ideaGetById_OK = (idea) => ({
+    type: ActionTypes.IDEA_GETBYID_OK,
+    idea: idea,
 });
-export const categoryGetById_X = () => ({
-    type: ActionTypes.CATEGORY_GETBYID_X,
+export const ideaGetById_X = () => ({
+    type: ActionTypes.IDEA_GETBYID_X,
 });
 
-export function getCategory(id) { 
+export function getIdea(id) { 
     return async (dispatch, getState) => {
-        dispatch(categoryGetById_REQ());
-        console.dir("getCategory by this id: "+id);
+        dispatch(ideaGetById_REQ());
+        console.dir("getIdea by this id: "+id);
         
         // Here would be some async AJAX call with await...
         // ... or some promises or so
         const ajaxRequest = {
             method:'get',
-            url: API_ROOT + '/Category/' + id,
+            url: API_ROOT + '/Idea/' + id,
         };
 
         axios(ajaxRequest)
         .then((response) => {
             console.log(response);
-            dispatch(categoryGetById_OK(response.data));
-            //dispatch(fetchAllCategories());
+            dispatch(ideaGetById_OK(response.data));
+            //dispatch(fetchAllIdeas());
         })
         .catch((error)=>{
             console.error("Error: " +error);
-            dispatch(categoryGetById_X());
+            dispatch(ideaGetById_X());
         })
         .then( () => {
             return {type:null};  // 'Empty' action object
@@ -170,38 +170,38 @@ export function getCategory(id) {
 };
 
 // Action object creator functions
-export const categoryUpdate_REQ = () => ({
-    type: ActionTypes.CATEGORY_UPDATE_REQ,
+export const ideaUpdate_REQ = () => ({
+    type: ActionTypes.IDEA_UPDATE_REQ,
 });
-export const categoryUpdate_OK = () => ({
-    type: ActionTypes.CATEGORY_UPDATE_OK,
+export const ideaUpdate_OK = () => ({
+    type: ActionTypes.IDEA_UPDATE_OK,
 });
-export const categoryUpdate_X = () => ({
-    type: ActionTypes.CATEGORY_UPDATE_X,
+export const ideaUpdate_X = () => ({
+    type: ActionTypes.IDEA_UPDATE_X,
 });
 
 // Helper function, real action function?
-export function updateCategory(category) { 
+export function updateIdea(idea) { 
     return async (dispatch, getState) => {
-        dispatch(categoryUpdate_REQ());
-        console.dir(category);
+        dispatch(ideaUpdate_REQ());
+        console.dir(idea);
         
         // Here would be some async AJAX call with await...
         // ... or some promises or so
         const ajaxRequest = {
             method:'put',
-            url: API_ROOT + '/category',
-            data: category,
+            url: API_ROOT + '/idea',
+            data: idea,
         };
 
         axios(ajaxRequest)
         .then((response) => {
-            dispatch(categoryUpdate_OK());
-            dispatch(fetchAllCategories());
+            dispatch(ideaUpdate_OK());
+            dispatch(fetchAllIdeas());
         })
         .catch((error)=>{
             console.error("Error: " +error);
-            dispatch(categoryUpdate_X());
+            dispatch(ideaUpdate_X());
         })
         .then( () => {
             return {type:null};  // 'Empty' action object

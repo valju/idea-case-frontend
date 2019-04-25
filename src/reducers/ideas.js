@@ -3,75 +3,75 @@ import ActionTypes from '../actions/ActionTypes';
 //Define initial states of reducer
 export const initialState = {
     isLoading: false,
-    categoryList: [],
-    categoryIdsFound: null,
-    categoryCurrent: null,
+    ideaList: [],
+    ideaIdsFound: null,
+    ideaCurrent: null,
 };
 
-export default function categories(state = initialState, action) {
+export default function ideas(state = initialState, action) {
     switch (action.type) {
 
-        case ActionTypes.CATEGORIES_ALL_REQ:
+        case ActionTypes.IDEAS_ALL_REQ:
             return {
                 ...state,
                 isLoading: true,
             };
-        case ActionTypes.CATEGORIES_ALL_OK:
+        case ActionTypes.IDEAS_ALL_OK:
             return {
                 ...state,
-                categoryList: action.categoryList,
+                ideaList: action.ideaList,
                 isLoading: false,
             };
-        case ActionTypes.CATEGORIES_ALL_X:
+        case ActionTypes.IDEAS_ALL_X:
             return {
                 ...state,
                 isLoading: false,
             };
 
-        case ActionTypes.CATEGORY_DELETE_REQ:
+        case ActionTypes.IDEA_DELETE_REQ:
             return {
                 ...state,
                 isLoading: true,
             };
-        case ActionTypes.CATEGORY_DELETE_OK:
+        case ActionTypes.IDEA_DELETE_OK:
             return {
                 ...state,
                 isLoading: false,
             };
-        case ActionTypes.CATEGORY_DELETE_X:
+        case ActionTypes.IDEA_DELETE_X:
             return {
                 ...state,
                 isLoading: false,
             };
 
-        case ActionTypes.CATEGORY_GETBYID_REQ:
+        case ActionTypes.IDEA_GETBYID_REQ:
             return {
                 ...state,
                 isLoading: true,
             };
-        case ActionTypes.CATEGORY_GETBYID_OK:
+        case ActionTypes.IDEA_GETBYID_OK:
             return {
                 ...state,
-                categoryCurrent: action.category[0],
+                ideaCurrent: action.idea[0],
                 isLoading: false,
             };
-        case ActionTypes.CATEGORY_GETBYID_X:
+        case ActionTypes.IDEA_GETBYID_X:
             return {
                 ...state,
                 isLoading: false,
             };
 
-        case ActionTypes.CATEGORY_UPDATE_REQ:
+        case ActionTypes.IDEA_UPDATE_REQ:
             return {
                 ...state,
                 isLoading: true,
             };
-        case ActionTypes.CATEGORY_UPDATE_OK:
+        case ActionTypes.IDEA_UPDATE_OK:
             return {
                 ...state,
                 isLoading: false,
             };
-        case ActionTypes.CATEGORY_UPDATE_X:
+        case ActionTypes.IDEA_UPDATE_X:
             return {
                 ...state,
                 isLoading: false,

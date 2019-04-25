@@ -6,14 +6,14 @@ import {Link} from 'react-router-dom';
 
 class CategoryDetails extends Component {
   componentDidMount = () => {
-    this.props.categoryGetById(this.props.match.params.id);    
+    this.props.categoryGetById(this.props.categoryId);    
   }
 
   render = () => {
     return (  
       <div>
         <h2>One Category</h2>
-        <p>Category id digged out of react-router-dom params: {this.props.match.params.id}</p>
+        {/* <p>Category id digged out of react-router-dom params: {this.props.categoryId}</p> */}
 
         { (this.props.categories.categoryCurrent === null) 
                 ?

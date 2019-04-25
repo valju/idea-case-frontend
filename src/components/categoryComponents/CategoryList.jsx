@@ -4,6 +4,8 @@ import {fetchAllCategories, deleteCategory} from '../../actions/category';
 import CategoryListItem from './CategoryListItem';
 import { connect } from 'react-redux';
 
+import SimpleCard from '../MUI-Card';
+
 class CategoryList extends Component {
   /*
   constructor(props) {
@@ -24,8 +26,12 @@ class CategoryList extends Component {
         <ol>
           {
             this.props.categories.categoryList.map((item) =>
-              <CategoryListItem key={item.id} item={item}
-               deleteCategoryClicked={this.props.deleteCategoryLocal} />
+              <div>
+                <CategoryListItem key={item.id} item={item}
+                deleteCategoryClicked={this.props.deleteCategoryLocal} />
+                {/* <SimpleCard key={item.id} item={item} 
+                deleteCategoryClicked={this.props.deleteCategoryLocal} /> */}
+              </div>
             )
           }
         </ol>
