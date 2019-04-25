@@ -130,8 +130,10 @@ export function deleteCategory(id) {
 };
 
 // Action object creator functions
-export const categoryGetById_REQ = () => ({
+export const categoryGetById_REQ = (id) => ({
     type: ActionTypes.CATEGORY_GETBYID_REQ,
+    id:id,
+  
 });
 export const categoryGetById_OK = (category) => ({
     type: ActionTypes.CATEGORY_GETBYID_OK,
@@ -143,7 +145,7 @@ export const categoryGetById_X = () => ({
 
 export function getCategory(id) { 
     return async (dispatch, getState) => {
-        dispatch(categoryGetById_REQ());
+        dispatch(categoryGetById_REQ(id));
         console.dir("Delete by this id: "+id);
         
         // Here would be some async AJAX call with await...

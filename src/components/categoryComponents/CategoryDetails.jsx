@@ -5,16 +5,15 @@ import {getCategory} from '../../actions/category';
 import {Link} from 'react-router-dom';
 
 class CategoryDetails extends Component {
-  componentDidMount = () => {
-    this.props.categoryGetById(this.props.match.params.id);    
-  }
+  // componentDidMount = () => {
+  //      // }
 
   render = () => {
+    //this.props.categoryGetById(this.props.categoryId);    
+
     return (  
       <div>
         <h2>One Category</h2>
-        <p>Category id digged out of react-router-dom params: {this.props.match.params.id}</p>
-
         { (this.props.categories.categoryCurrent === null) 
                 ?
             <CategoryItem item={{name:"Hard-coded placeholder", budgetLimit:12345}} />
@@ -29,15 +28,15 @@ class CategoryDetails extends Component {
 }
 
 
-const mapDispatchToProps = dispatch => ({
-  categoryGetById: (id) => {
-    dispatch(getCategory(id));
-  },
-});
+// const mapDispatchToProps = dispatch => ({
+//   categoryGetById: (id) => {
+//     dispatch(getCategory(id));
+//   },
+// });
 
 const mapStateToProps = state => ({
   categories: state.categories,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryDetails);
+export default connect(mapStateToProps, null)(CategoryDetails);
 
