@@ -1,6 +1,6 @@
 import ActionTypes from '../actions/ActionTypes';
 
-//Define initial states of reducer
+// Define initial states of reducer
 export const initialState = {
     isLoading: false,
     categoryList: [],
@@ -79,6 +79,7 @@ export default function categories(state = initialState, action) {
                 isLoading: false,
             };
         */
+       
         case null:
             return state;
 
