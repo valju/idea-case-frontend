@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import IdeaItem from './IdeaItem';
 import { Link } from 'react-router-dom';
 
-//Styling
-import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
-import UpdateIcon from '@material-ui/icons/Update';
-
 export default class IdeaListItem extends Component {
 
   render() {
@@ -16,22 +11,21 @@ export default class IdeaListItem extends Component {
           <IdeaItem item={this.props.item} />
         </Link>
         <span> </span>  {/* Just one space added before delete button */}
-        <Button
+        <button
           type="button"
-          color="primary"
           onClick={() => {
-            this.props.deleteCategoryClicked(
+            this.props.deleteIdeaClicked(
               this.props.item.id
             )
           }}
         >
-          <DeleteIcon></DeleteIcon>
-        </Button>
+          DELETE
+        </button>
 
         <Link to={"/IdeaUpdate/" + this.props.item.id}>
-          <Button type="button" color="primary">
-            <UpdateIcon></UpdateIcon>
-          </Button>
+          <button type="button">
+            UPDATE
+          </button>
         </Link>
 
       </li>

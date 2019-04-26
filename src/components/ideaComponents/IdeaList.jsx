@@ -4,8 +4,6 @@ import {fetchAllIdeas, deleteIdea} from '../../actions/idea';
 import IdeaListItem from './IdeaListItem';
 import { connect } from 'react-redux';
 
-import SimpleCard from '../MUI-Card';
-
 class IdeaList extends Component {
   componentDidMount() {
     this.props.ideasFetchAll();
@@ -20,8 +18,6 @@ class IdeaList extends Component {
             this.props.ideas.ideaList.map((item) =>
                 <IdeaListItem key={item.id} item={item}
                 deleteIdeaClicked={this.props.deleteIdeaLocal} />
-                /* <SimpleCard key={item.id} item={item} 
-                deleteCategoryClicked={this.props.deleteCategoryLocal} /> */
             )
             
           }

@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import { updateCategory } from '../../actions/category';
 import { Link } from 'react-router-dom';
 
-//Styling
-import Button from '@material-ui/core/Button';
-
 class CategoryUpdate extends Component {
     constructor(props) {
         super(props);
@@ -60,7 +57,7 @@ class CategoryUpdate extends Component {
                     Description: <input id="description" type="text" onChange={this.inputFieldValueChanged} value={this.state.categoryObject.description} /><br />
                     Budget limit: <input id="budgetLimit" type="text" onChange={this.inputFieldValueChanged} value={this.state.categoryObject.budgetLimit} /><br />
 
-                    <Button type="button" onClick={this.updateCategoryButtonClicked} color="primary">UPDATE</Button>
+                    <button type="button" onClick={this.updateCategoryButtonClicked}>UPDATE</button>
                 </p>
                 <p><Link to="/Categories">Back to all categories</Link></p>
             </div>

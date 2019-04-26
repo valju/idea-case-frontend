@@ -4,8 +4,6 @@ import {fetchAllCategories, deleteCategory} from '../../actions/category';
 import CategoryListItem from './CategoryListItem';
 import { connect } from 'react-redux';
 
-import SimpleCard from '../MUI-Card';
-
 class CategoryList extends Component {
   /*
   constructor(props) {

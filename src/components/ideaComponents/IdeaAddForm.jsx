@@ -1,29 +1,5 @@
 import React, { Component } from 'react';
 
-//Styling
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
-
-const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-    },
-    dense: {
-        marginTop: 19,
-    },
-    menu: {
-        width: 200,
-    },
-});
-
 class IdeaAddForm extends Component {
     constructor(props) {
         super(props);
@@ -78,85 +54,72 @@ class IdeaAddForm extends Component {
     }
 
     render = () => {
-        const { classes } = this.props;
-
         return (
             <form>
-                <TextField
+                Id: <input
                     id="id"
-                    label="id"
-                    className={classes.textField}
-                    value={this.state.newIdeaObject.id}
+                    type="text"
                     onChange={this.inputFieldValueChanged}
-                    margin="normal"
-                />
+                    value={this.state.newIdeaObject.id} />
                 <br />
-                <TextField
+                Name: <input
                     id="name"
-                    label="name"
-                    className={classes.textField}
-                    value={this.state.newIdeaObject.name}
+                    type="text"
                     onChange={this.inputFieldValueChanged}
-                    margin="normal"
-                />
+                    value={this.state.newIdeaObject.name} />
                 <br />
-                <TextField
+
+                Description: <input
                     id="description"
-                    label="description"
-                    className={classes.textField}
+                    type="text"
                     value={this.state.newIdeaObject.description}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
                 <br />
-                <TextField
+                Budget: <input
                     id="budget"
-                    label="budget"
-                    className={classes.textField}
+                    type="text"
                     value={this.state.newIdeaObject.budget}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
                 <br />
-                <TextField
+                Ready For Comment: <input
                     id="readyForComment"
-                    label="readyForComment"
-                    className={classes.textField}
+                    type="checkbox"
                     value={this.state.newIdeaObject.readyForComment}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
                 <br />
-                <TextField
+                People Needed: <input
                     id="peopleNeeded"
-                    label="peopleNeeded"
-                    className={classes.textField}
+                    type="text"
                     value={this.state.newIdeaObject.peopleNeeded}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
                 <br />
-                <TextField
+                Category ID: <input
                     id="categoryId"
-                    label="categoryId"
-                    className={classes.textField}
+                    type="text"
                     value={this.state.newIdeaObject.categoryId}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
+
                 <br />
-                <Button
-                    variant="outlined"
+
+                <button
                     type="button"
-                    onClick={this.handleSubmit}
-                    color="primary" >ADD NEW IDEA</Button>
+                    onClick={this.handleSubmit}>
+                    ADD NEW IDEA
+                </button>
+
             </form>
         );
     };
 }
 
-IdeaAddForm.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(IdeaAddForm);
+export default IdeaAddForm;

@@ -5,32 +5,15 @@ import { Link } from 'react-router-dom';
 
 import IdeaUpdateForm from './IdeaUpdateForm';
 
-//Styling
-import Button from '@material-ui/core/Button';
-
 class IdeaUpdate extends Component {
-
-    inputFieldValueChanged = (event) => {
-        this.setState(
-            {
-                ideaObject:
-                    { ...this.state.ideaObject, [event.target.id]: event.target.value }
-            });
-    };
-
-    updateIdeaButtonClicked = () => {
-        const idea = this.state.ideaObject;
+    updateIdeaButtonClicked = (ideaObject) => {
+        const idea = ideaObject;
         idea.id = Number(idea.id);  // id to Number
-        idea.budgetLimit = Number(idea.budgetLimit);
+        idea.budget = Number(idea.budget);
+        idea.peopleNeeded = Number(idea.peopleNeeded);
+        idea.categoryId = Number(idea.categoryId);
 
         this.props.updateIdeaLocal(idea);
-
-        // this.setState(
-        //     {
-        //         newIdeaObject:
-        //             { id: "", name: "", budgetLimit: "" },
-        //     }
-        // );
         // this.props.addIdeaLocal(this.state.newIdeaObject);   // Other way
     };
 
@@ -38,13 +21,7 @@ class IdeaUpdate extends Component {
         return (
             <div>
                 <h2>Idea id {this.props.ideaId}</h2>
-                {/* <p>
-                    Name: <input id="name" type="text" onChange={this.inputFieldValueChanged} value={this.state.ideaObject.name} /><br />
-                    Description: <input id="description" type="text" onChange={this.inputFieldValueChanged} value={this.state.ideaObject.description} /><br />
-                    Budget limit: <input id="budgetLimit" type="text" onChange={this.inputFieldValueChanged} value={this.state.ideaObject.budgetLimit} /><br />
-
-                    <Button type="button" onClick={this.updateIdeaButtonClicked} color="primary">UPDATE</Button>
-                </p> */}
+                <IdeaUpdateForm ideaId={this.props.ideaId} updateIdeaButtonClicked={this.updateIdeaButtonClicked} />
                 <p><Link to="/Ideas">Back to all ideas</Link></p>
             </div>
         );

@@ -1,35 +1,11 @@
 import React, { Component } from 'react';
 
-//Styling
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
-
-const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-    },
-    dense: {
-        marginTop: 19,
-    },
-    menu: {
-        width: 200,
-    },
-});
-
 class IdeaUpdateForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            newIdeaObject: {
-                id: '',
+            ideaObject: {
+                id: this.props.ideaId,
                 name: '',
                 description: '',
                 budget: '',
@@ -45,9 +21,9 @@ class IdeaUpdateForm extends Component {
     inputFieldValueChanged = (event) => {
         this.setState(
             {
-                newIdeaObject:
+                ideaObject:
                 {
-                    ...this.state.newIdeaObject,
+                    ...this.state.ideaObject,
                     [event.target.id]: event.target.value
                 }
             });
@@ -55,7 +31,7 @@ class IdeaUpdateForm extends Component {
 
     resetInputBox = () => {
         this.setState({
-            newIdeaObject: {
+            ideaObject: {
                 id: '',
                 name: '',
                 description: '',
@@ -72,91 +48,78 @@ class IdeaUpdateForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        const newIdeaObject = this.state.newIdeaObject;
+        const ideaObject = this.state.ideaObject;
         this.resetInputBox();
-        this.props.updateIdeaButtonClicked(newIdeaObject);
+        this.props.updateIdeaButtonClicked(ideaObject);
     }
 
     render = () => {
-        const { classes } = this.props;
-
         return (
             <form>
-                <TextField
+                Id: <input
                     id="id"
-                    label="id"
-                    className={classes.textField}
-                    value={this.state.newIdeaObject.id}
+                    type="text"
                     onChange={this.inputFieldValueChanged}
-                    margin="normal"
-                />
+                    value={this.state.ideaObject.id} />
                 <br />
-                <TextField
+                Name: <input
                     id="name"
-                    label="name"
-                    className={classes.textField}
-                    value={this.state.newIdeaObject.name}
+                    type="text"
                     onChange={this.inputFieldValueChanged}
-                    margin="normal"
-                />
+                    value={this.state.ideaObject.name} />
                 <br />
-                <TextField
+
+                Description: <input
                     id="description"
-                    label="description"
-                    className={classes.textField}
-                    value={this.state.newIdeaObject.description}
+                    type="text"
+                    value={this.state.ideaObject.description}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
                 <br />
-                <TextField
+                Budget: <input
                     id="budget"
-                    label="budget"
-                    className={classes.textField}
-                    value={this.state.newIdeaObject.budget}
+                    type="text"
+                    value={this.state.ideaObject.budget}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
                 <br />
-                <TextField
+                Ready For Comment: <input
                     id="readyForComment"
-                    label="readyForComment"
-                    className={classes.textField}
-                    value={this.state.newIdeaObject.readyForComment}
+                    type="checkbox"
+                    value={this.state.ideaObject.readyForComment}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
                 <br />
-                <TextField
+                People Needed: <input
                     id="peopleNeeded"
-                    label="peopleNeeded"
-                    className={classes.textField}
-                    value={this.state.newIdeaObject.peopleNeeded}
+                    type="text"
+                    value={this.state.ideaObject.peopleNeeded}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
                 <br />
-                <TextField
+                Category ID: <input
                     id="categoryId"
-                    label="categoryId"
-                    className={classes.textField}
-                    value={this.state.newIdeaObject.categoryId}
+                    type="text"
+                    value={this.state.ideaObject.categoryId}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
+
                 <br />
-                <Button
-                    variant="outlined"
+
+                <button
                     type="button"
-                    onClick={this.handleSubmit}
-                    color="primary" >ADD NEW IDEA</Button>
+                    onClick={this.handleSubmit}>
+                    UPDATE IDEA
+                </button>
+
             </form>
         );
     };
 }
 
-IdeaUpdateForm.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(IdeaUpdateForm);
+export default IdeaUpdateForm;
