@@ -12,7 +12,7 @@ class CommentList extends Component {
   render() {
     return (
       <div>
-        <h4>List of ideas with comments</h4>
+        <h4>List of ideas with comments (Currently for Idea with id 1002)</h4>
         <ol>
           {
             this.props.comments.commentListByIdeaId.map((item) =>

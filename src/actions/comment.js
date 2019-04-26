@@ -23,7 +23,7 @@ export function fetchAllCommentsByIdeaId(ideaId) {
   
       const ajaxRequest = {
         method: 'get',
-        url: API_ROOT + '/comment/idea/1001',
+        url: API_ROOT + '/comment/idea/1002',
       };
   
       axios(ajaxRequest)
