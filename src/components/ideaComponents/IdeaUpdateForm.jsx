@@ -56,12 +56,12 @@ class IdeaUpdateForm extends Component {
     render = () => {
         return (
             <form>
-                Id: <input
+                {/* Id: <input
                     id="id"
                     type="text"
                     onChange={this.inputFieldValueChanged}
                     value={this.state.ideaObject.id} />
-                <br />
+                <br /> */}
                 Name: <input
                     id="name"
                     type="text"
