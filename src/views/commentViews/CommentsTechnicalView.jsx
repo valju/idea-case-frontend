@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import MemberList from '../../components/memberComponents/MemberList';
+import CommentList from '../../components/commentComponents/CommentList';
 
 export default class CommentsTechnicalView extends Component {
 
@@ -7,6 +7,7 @@ export default class CommentsTechnicalView extends Component {
     return (
       <div>
         <h2>Comments Technical View</h2>
+        <CommentList />
       </div>
     );
   }
