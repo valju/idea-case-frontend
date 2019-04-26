@@ -7,7 +7,7 @@ import IdeaAddForm from './IdeaAddForm';
 class IdeaAdd extends Component {
     addIdeaButtonClicked = (newIdea) => {
         const idea = newIdea;
-        idea.id = Number(idea.id);  // id to Number
+        // idea.id = Number(idea.id);  // id to Number
         idea.budget = Number(idea.budget);
         idea.peopleNeeded = Number(idea.peopleNeeded);
         idea.categoryId = Number(idea.categoryId);

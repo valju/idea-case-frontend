@@ -5,7 +5,7 @@ class IdeaAddForm extends Component {
         super(props);
         this.state = {
             newIdeaObject: {
-                id: '',
+                // id: '',
                 name: '',
                 description: '',
                 budget: '',
@@ -32,7 +32,7 @@ class IdeaAddForm extends Component {
     resetInputBox = () => {
         this.setState({
             newIdeaObject: {
-                id: '',
+                // id: '',
                 name: '',
                 description: '',
                 budget: '',
@@ -56,12 +56,12 @@ class IdeaAddForm extends Component {
     render = () => {
         return (
             <form>
-                Id: <input
+                {/* Id: <input
                     id="id"
                     type="text"
                     onChange={this.inputFieldValueChanged}
                     value={this.state.newIdeaObject.id} />
-                <br />
+                <br /> */}
                 Name: <input
                     id="name"
                     type="text"

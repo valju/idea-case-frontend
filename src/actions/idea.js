@@ -106,12 +106,7 @@ export function deleteIdea(id) {
         // ... or some promises or so
         const ajaxRequest = {
             method:'delete',
-            url: API_ROOT + '/idea/',
-            
-            params: {
-                id:id,
-            }
-            
+            url: API_ROOT + '/idea/' + id,            
         };
 
         axios(ajaxRequest)
@@ -150,7 +145,7 @@ export function getIdea(id) {
         // ... or some promises or so
         const ajaxRequest = {
             method:'get',
-            url: API_ROOT + '/Idea/' + id,
+            url: API_ROOT + '/idea/' + id,
         };
 
         axios(ajaxRequest)
