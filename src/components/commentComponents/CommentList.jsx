@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { fetchAllCommentsByIdeaId } from '../../actions/comment';
-//import CategoryListItem from './CategoryListItem';
 import { connect } from 'react-redux';
 
 class CommentList extends Component {
@@ -16,7 +15,7 @@ class CommentList extends Component {
         <ol>
           {
             this.props.comments.commentListByIdeaId.map((item) =>
-              <li key={item.commentTimeStamp}>{item.firstName} {item.lastName} says: {item.commentText}</li>
+              <li key={`${item.ideaId}-${item.memberId}-${item.commentTimeStamp}`}>{item.firstName} {item.lastName} says: {item.commentText}</li>
             )
           }
         </ol>
