@@ -1,56 +1,59 @@
 import React from 'react';
+
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import HomeIcon from '@material-ui/icons/Home';
 import CategoryIcon from '@material-ui/icons/Category';
+import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
 import PersonIcon from '@material-ui/icons/Person';
 import CommentIcon from '@material-ui/icons/Comment';
 import PortraitIcon from '@material-ui/icons/Portrait';
-import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
+}
 
 export const mainListItems = (
   <div>
-    <ListItem button>
+    <ListItemLink href="/home">
       <ListItemIcon>
         <HomeIcon />
       </ListItemIcon>
       <ListItemText primary="Home" />
-    </ListItem>
-    <ListItem button>
+    </ListItemLink>
+    <ListItemLink href="/categories">
       <ListItemIcon>
       <CategoryIcon />
       </ListItemIcon>
       <ListItemText primary="Category" />
-    </ListItem>
-    <ListItem button>
+    </ListItemLink>
+    <ListItemLink href="/ideas">
       <ListItemIcon>
       <WbIncandescentIcon />
       </ListItemIcon>
       <ListItemText primary="Idea" />
-    </ListItem>
-    <ListItem button>
+    </ListItemLink>
+    <ListItemLink href="/members">
       <ListItemIcon>
       <PersonIcon />
       </ListItemIcon>
       <ListItemText primary="Member" />
-    </ListItem>
-    <ListItem button>
+    </ListItemLink>
+    <ListItemLink href="/comments_technical">
       <ListItemIcon>
       <CommentIcon />
       </ListItemIcon>
       <ListItemText primary="Comment" />
-    </ListItem>
-    <ListItem button>
+    </ListItemLink>
+    <ListItemLink href="/idea_member">
       <ListItemIcon>
       <PortraitIcon />
       </ListItemIcon>
       <ListItemText primary="IdeaMember" />
-    </ListItem>
+    </ListItemLink>
   </div>
 );
 
