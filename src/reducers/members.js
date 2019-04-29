@@ -1,37 +1,52 @@
-import ActionTypes from '../actions/ActionTypes';
+import ActionTypes from "../actions/ActionTypes";
 
 //Define initial states of reducer
 export const initialState = {
-    isLoading: false,
-    memberList: [],
-    memberIdsFound: null,
-    memberCurrent: null,
+	isLoading: false,
+	memberList: [],
+	memberIdsFound: null,
+	memberCurrent: null
 };
 
 export default function members(state = initialState, action) {
-    switch (action.type) {
+	switch (action.type) {
+		case ActionTypes.MEMBERS_ALL_REQ:
+			return {
+				...state,
+				isLoading: true
+			};
+		case ActionTypes.MEMBERS_ALL_OK:
+			return {
+				...state,
+				memberList: action.memberList,
+				isLoading: false
+			};
+		case ActionTypes.MEMBERS_ALL_X:
+			return {
+				...state,
+				isLoading: false
+			};
+		case ActionTypes.MEMBERS_GETBYID_REQ:
+			return {
+				...state,
+				isLoading: true
+			};
+		case ActionTypes.MEMBERS_GETBYID_OK:
+			return {
+				...state,
+				memberCurrent: action.member,
+				isLoading: false
+			};
+		case ActionTypes.CATEGORY_GETBYID_X:
+			return {
+				...state,
+				isLoading: false
+			};
 
-        case ActionTypes.MEMBERS_ALL_REQ:
-            return {
-                ...state,
-                isLoading: true,
-            };
-        case ActionTypes.MEMBERS_ALL_OK:
-            return {
-                ...state,
-                memberList: action.memberList,
-                isLoading: false,
-            };
-        case ActionTypes.MEMBERS_ALL_X:
-            return {
-                ...state,
-                isLoading: false,
-            };
-      
-        case null:
-            return state;
+		case null:
+			return state;
 
-        default:
-            return state;
-    }
+		default:
+			return state;
+	}
 }
