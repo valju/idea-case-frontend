@@ -4,6 +4,7 @@ import Categories from '../views/categoryViews/Categories';
 import CategoryDetailsView from '../views/categoryViews/CategoryDetailsView';
 import Members from '../views/memberViews/Members';
 import CommentsTechnicalView from '../views/commentViews/CommentsTechnicalView';
+import CommentEditView from '../views/commentViews/CommentEditView';
 // import CategoryUpdate from '../views/categoryViews/CategoryUpdate';
 
 class Navigator extends Component {
@@ -27,6 +28,7 @@ class Navigator extends Component {
             <Route path="/members" component={Members} />
             <Route path="/category/:id" component={CategoryDetailsView} />
             <Route path="/comments_technical" component={CommentsTechnicalView} />
+            <Route path="/comment_edit/:ideaId/:memberId/:commentTimeStamp" component={CommentEditView} />
             {/* <Route path="/category_update/:id" component={CategoryUpdate} /> */}
             <Route render={ () => <h1>Page not found</h1>} />
           </Switch>

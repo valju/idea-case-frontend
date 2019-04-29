@@ -21,9 +21,10 @@ export function fetchAllCommentsByIdeaId(ideaId) {
 
     dispatch(commentsByIdeaId_REQ());
 
+    const ideaId = 1002;
     const ajaxRequest = {
       method: 'get',
-      url: API_ROOT + '/comment/idea/1002',
+      url: API_ROOT + '/comment/idea/' + ideaId,
     };
 
     axios(ajaxRequest)
@@ -76,3 +77,85 @@ export function addComment(comment) {
       });
   }
 };
+
+// Comment UPDATE
+export const commentUpdate_REQ = () => ({
+  type: ActionTypes.COMMENT_UPDATE_REQ,
+});
+export const commentUpdate_OK = () => ({
+  type: ActionTypes.COMMENT_UPDATE_OK,
+});
+export const commentUpdate_X = () => ({
+  type: ActionTypes.COMMENT_UPDATE_X,
+});
+
+export function updateComment(comment) {
+  return async (dispatch, getState) => {
+
+    dispatch(commentAdd_REQ());
+
+    const ajaxRequest = {
+      method: 'put',
+      url: API_ROOT + '/comment',
+      data: comment,
+    };
+
+    axios(ajaxRequest)
+      .then(() => {
+        dispatch(commentAdd_OK());
+        dispatch(fetchAllCommentsByIdeaId(comment.ideaId));
+      })
+      .catch((error) => {
+        console.error("Error: " + error);
+        dispatch(commentAdd_X());
+      })
+      .then(() => {
+        return { type: null }; // 'Empty' action object
+      });
+  }
+};
+
+// COMMENT GET ONE
+export const commentGetOne_REQ = () => ({
+  type: ActionTypes.COMMENT_GETONE_REQ,
+});
+export const commentGetOne_OK = (comment) => ({
+  type: ActionTypes.COMMENT_GETONE_OK,
+  comment: comment
+});
+export const commentGetOne_X = () => ({
+  type: ActionTypes.COMMENT_GETONE_X,
+});
+
+export function fetchOneComment(commentObject) {
+  return async (dispatch, getState) => {
+
+    dispatch(commentGetOne_REQ());
+
+    //let timeStamp = commentObject.commentTimeStamp;
+    //let timeStamp2 = timeStamp.replace("T", " ");
+    //let timeStamp3 = timeStamp2.replace("Z", "");
+
+    // this is a hard-coded timestamp, because of timezone conversion
+    commentObject.commentTimeStamp = "2019-04-24 21:46:25.640";
+    
+    const ajaxRequest = {
+      method: 'get',
+      url: API_ROOT + "/comment/" + commentObject.ideaId + "/" + commentObject.memberId + "?commentTimeStamp=" + commentObject.commentTimeStamp,
+    };
+
+    axios(ajaxRequest)
+      .then((response) => {
+        dispatch(commentGetOne_OK(response.data));
+      })
+      .catch((error) => {
+        console.error("Error: " + error);
+        dispatch(commentGetOne_X());
+      })
+      .then(() => {
+        return { type: null }; // 'Empty' action object
+      });
+  }
+};
+
+
