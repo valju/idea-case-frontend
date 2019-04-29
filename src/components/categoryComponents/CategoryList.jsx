@@ -24,12 +24,8 @@ class CategoryList extends Component {
         <ol>
           {
             this.props.categories.categoryList.map((item) =>
-              <div>
                 <CategoryListItem key={item.id} item={item}
                 deleteCategoryClicked={this.props.deleteCategoryLocal} />
-                {/* <SimpleCard key={item.id} item={item} 
-                deleteCategoryClicked={this.props.deleteCategoryLocal} /> */}
-              </div>
             )
           }
         </ol>
