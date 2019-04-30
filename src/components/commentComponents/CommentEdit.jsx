@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { updateComment, fetchOneComment } from '../../actions/comment';
 
 class CommentEdit extends Component {
@@ -8,6 +9,7 @@ class CommentEdit extends Component {
     super(props);
     this.state = {
       commentObject: { id: "", commentText: "", },
+      showBackButton: false,
     };
   }
 
@@ -15,14 +17,24 @@ class CommentEdit extends Component {
     this.props.getOneCommentLocal(this.props.id);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.comments.commentCurrent !== prevProps.comments.commentCurrent) {
+      this.setState({
+        commentObject:
+          { ...this.state.commentObject, id: this.props.comments.commentCurrent[0].id, commentText: this.props.comments.commentCurrent[0].commentText, }
+      });
+    }
+  }
+
   inputFieldValueChanged = (event) => {
     this.setState({
       commentObject:
-        { ...this.state.commentObject, commentText: event.target.value, id: this.props.comments.commentCurrent[0].id, }
+        { ...this.state.commentObject, commentText: event.target.value, }
     });
   };
 
   updateComment = () => {
+    this.setState({ showBackButton: true, });
     this.props.updateCommentLocal(this.state.commentObject);
   }
 
@@ -37,16 +49,26 @@ class CommentEdit extends Component {
       return (
         <div>
           <h4>Edit Comment</h4>
-          <p>Old Comment: {this.props.comments.commentCurrent[0].commentText}</p>
-          <p>New Comment:
+          <p>
             <input
               id="commentText" type="text" size="50"
               onChange={this.inputFieldValueChanged}
               value={this.state.commentObject.commentText}
             />
-            <br />
+          </p>
+          <p>
             <button type="button" onClick={this.updateComment}>Edit comment</button>
           </p>
+          {this.state.showBackButton &&
+            <div>
+              <p>
+                Comment edited!
+              </p>
+              <p>
+                <Link to="/comments_technical"><span>Back</span></Link>
+              </p>
+            </div>
+          } 
         </div>
       );
     }
