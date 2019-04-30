@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fetchAllCommentsByIdeaId } from '../../actions/comment';
-//import CategoryListItem from './CategoryListItem';
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
 class CommentList extends Component {
@@ -16,7 +16,11 @@ class CommentList extends Component {
         <ol>
           {
             this.props.comments.commentListByIdeaId.map((item) =>
-              <li key={item.commentTimeStamp}>{item.firstName} {item.lastName} says: {item.commentText}</li>
+              <li key={`${item.id}`}>
+                {item.firstName} {item.lastName} says: {item.commentText}
+                &nbsp;
+                <Link to={`/comment_edit/${item.id}`}>Edit</Link>
+              </li>
             )
           }
         </ol>
