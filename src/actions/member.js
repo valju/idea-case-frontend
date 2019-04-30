@@ -38,3 +38,79 @@ export function fetchAllmembers() {
 			});
 	};
 }
+
+// Adding new members
+export const memberAdd_REQ = () => ({
+	type: ActionTypes.MEMBERS_ADD_REQ
+});
+export const memberAdd_OK = () => ({
+	type: ActionTypes.MEMBERS_ADD_OK
+});
+export const memberAdd_X = () => ({
+	type: ActionTypes.MEMBERS_ADD_X
+});
+
+export function addMember(member) {
+	return async (dispatch, getState) => {
+		dispatch(memberAdd_REQ());
+
+		// Here would be some async AJAX call with await...
+		// ... or some promises or so
+		const ajaxRequest = {
+			method: "post",
+			url: API_ROOT + "/member",
+			data: member
+		};
+
+		axios(ajaxRequest)
+			.then(() => {
+				dispatch(memberAdd_OK());
+				dispatch(fetchAllmembers());
+			})
+			.catch(error => {
+				console.error("Error: " + error);
+				dispatch(memberAdd_X());
+			})
+			.then(() => {
+				return { type: null }; // 'Empty' action object
+			});
+	};
+}
+
+// Category GET One By Id
+export const memberGetById_REQ = () => ({
+	type: ActionTypes.MEMBERS_GETBYID_REQ
+});
+export const memberGetById_OK = member => ({
+	type: ActionTypes.MEMBERS_GETBYID_OK,
+	member: member
+});
+export const memberGetById_X = () => ({
+	type: ActionTypes.MEMBERS_GETBYID_X
+});
+
+export function getMember(id) {
+	return async (dispatch, getState) => {
+		dispatch(memberGetById_REQ());
+		console.dir("Get member with this id: " + id);
+
+		// Here would be some async AJAX call with await...
+		// ... or some promises or so
+		const ajaxRequest = {
+			method: "get",
+			url: API_ROOT + "/member/" + id
+		};
+
+		axios(ajaxRequest)
+			.then(response => {
+				dispatch(memberGetById_OK(response.data));
+			})
+			.catch(error => {
+				console.error("Error: " + error);
+				dispatch(memberGetById_X());
+			})
+			.then(() => {
+				return { type: null }; // 'Empty' action object
+			});
+	};
+}
