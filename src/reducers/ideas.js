@@ -76,24 +76,24 @@ export default function ideas(state = initialState, action) {
                 ...state,
                 isLoading: false,
             };
-        /*
-        case ActionTypes.CATEGORY_RANDOMIZED_REQ:
-            return {
-                ...state,
-                isLoading: true,
-            };
-        case ActionTypes.CATEGORY_RANDOMIZED_OK:
-            return {
-                ...state,
-                categoryCurrent: state.categoryList[action.id],
-                isLoading: false,
-            };
-        case ActionTypes.CATEGORY_RANDOMIZED_X:
-            return {
-                ...state,
-                isLoading: false,
-            };
-        */
+            /*
+            case ActionTypes.CATEGORY_RANDOMIZED_REQ:
+                return {
+                    ...state,
+                    isLoading: true,
+                };
+            case ActionTypes.CATEGORY_RANDOMIZED_OK:
+                return {
+                    ...state,
+                    categoryCurrent: state.categoryList[action.id],
+                    isLoading: false,
+                };
+            case ActionTypes.CATEGORY_RANDOMIZED_X:
+                return {
+                    ...state,
+                    isLoading: false,
+                };
+            */
         case null:
             return state;
 

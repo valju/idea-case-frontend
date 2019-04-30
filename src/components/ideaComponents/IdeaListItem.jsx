@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
-import IdeaItem from './IdeaItem';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import IdeaItem from "./IdeaItem";
+import { Link } from "react-router-dom";
 
 export default class IdeaListItem extends Component {
-
   render() {
     return (
       <li>
         <Link to={"/Idea/" + this.props.item.id}>
           <IdeaItem item={this.props.item} />
         </Link>
-        <span> </span>  {/* Just one space added before delete button */}
+        <span> </span> {/* Just one space added before delete button */}
         <button
           type="button"
           onClick={() => {
-            this.props.deleteIdeaClicked(
-              this.props.item.id
-            )
+            this.props.deleteIdeaClicked(this.props.item.id);
           }}
         >
           DELETE
@@ -30,7 +27,6 @@ export default class IdeaListItem extends Component {
             UPDATE
           </button>
         </Link>
-
       </li>
     );
   }

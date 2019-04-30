@@ -4,7 +4,7 @@ import { updateIdea } from '../../actions/idea';
 import { fetchAllCategories } from '../../actions/category';
 import { Link } from 'react-router-dom';
 
-import IdeaUpdateForm from './IdeaUpdateForm';
+import IdeaUpdateForm from "./IdeaUpdateForm";
 
 class IdeaUpdate extends Component {
     componentDidMount() {
@@ -37,7 +37,6 @@ class IdeaUpdate extends Component {
     }
 }
 
-
 const mapDispatchToProps = dispatch => ({
     updateIdeaLocal: (idea) => {
         dispatch(updateIdea(idea));
@@ -52,5 +51,7 @@ const mapStateToProps = state => ({
     categories: state.categories,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(IdeaUpdate);
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(IdeaUpdate);

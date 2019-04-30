@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import IdeaUpdate from '../../components/ideaComponents/IdeaUpdate';
-
+import React, { Component } from "react";
+import IdeaUpdate from "../../components/ideaComponents/IdeaUpdate";
 
 export default class IdeaUpdateView extends Component {
-
   render() {
     return (
       <div>
