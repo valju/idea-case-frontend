@@ -1,7 +1,9 @@
 import ActionTypes from './ActionTypes';
 //import {fetchTestCategories} from '../models/Test';
 import axios from 'axios';
-import {API_ROOT} from '../constants/AppConstants';
+import {
+    API_ROOT
+} from '../constants/AppConstants';
 
 // ACTION CREATORS (Action object creator functions)
 // ~ standard and only way to create each action object
@@ -17,28 +19,30 @@ export const categoriesAll_X = () => ({
 });
 
 // Helper function, real action function?
-export function fetchAllCategories() { 
+export function fetchAllCategories() {
     return async (dispatch, getState) => {
         dispatch(categoriesAll_REQ());
 
         //const categoryList = //fetchTestCategories();  // from mock "Back-end"
         const ajaxRequest = {
-            method:'get',
+            method: 'get',
             url: API_ROOT + '/category/all'
         };
-        
+
         axios(ajaxRequest)
-        .then((response) => {
-            dispatch(categoriesAll_OK(response.data));
-        })
-        .catch((error)=> {
-            console.error("Error: "+ error);
-            dispatch(categoriesAll_X());
-        })
-        .then( () => {
-                return {type:null};  // 'Empty' action object
-        });             
-        
+            .then((response) => {
+                dispatch(categoriesAll_OK(response.data));
+            })
+            .catch((error) => {
+                console.error("Error: " + error);
+                dispatch(categoriesAll_X());
+            })
+            .then(() => {
+                return {
+                    type: null
+                }; // 'Empty' action object
+            });
+
     }
 };
 
@@ -55,31 +59,33 @@ export const categoryAdd_X = () => ({
 });
 
 // Helper function, real action function?
-export function addCategory(category) { 
+export function addCategory(category) {
     return async (dispatch, getState) => {
         dispatch(categoryAdd_REQ());
         console.dir(category);
-        
+
         // Here would be some async AJAX call with await...
         // ... or some promises or so
         const ajaxRequest = {
-            method:'post',
+            method: 'post',
             url: API_ROOT + '/category',
             data: category,
         };
 
         axios(ajaxRequest)
-        .then((response) => {
-            dispatch(categoryAdd_OK());
-            dispatch(fetchAllCategories());
-        })
-        .catch((error)=>{
-            console.error("Error: " +error);
-            dispatch(categoryAdd_X());
-        })
-        .then( () => {
-            return {type:null};  // 'Empty' action object
-        });   
+            .then((response) => {
+                dispatch(categoryAdd_OK());
+                dispatch(fetchAllCategories());
+            })
+            .catch((error) => {
+                console.error("Error: " + error);
+                dispatch(categoryAdd_X());
+            })
+            .then(() => {
+                return {
+                    type: null
+                }; // 'Empty' action object
+            });
     }
 };
 
@@ -87,7 +93,7 @@ export function addCategory(category) {
 // Action object creator functions
 export const categoryDelete_REQ = (id) => ({
     type: ActionTypes.CATEGORY_DELETE_REQ,
-    id:id,
+    id: id,
 });
 export const categoryDelete_OK = () => ({
     type: ActionTypes.CATEGORY_DELETE_OK,
@@ -97,35 +103,37 @@ export const categoryDelete_X = () => ({
 });
 
 // Helper function, real action function?
-export function deleteCategory(id) { 
+export function deleteCategory(id) {
     return async (dispatch, getState) => {
         dispatch(categoryDelete_REQ(id));
-        console.dir("Delete by this id: "+id);
-        
+        console.dir("Delete by this id: " + id);
+
         // Here would be some async AJAX call with await...
         // ... or some promises or so
         const ajaxRequest = {
-            method:'delete',
+            method: 'delete',
             url: API_ROOT + '/category/',
-            
+
             params: {
-                id:id,
+                id: id,
             }
-            
+
         };
 
         axios(ajaxRequest)
-        .then((response) => {
-            dispatch(categoryDelete_OK());
-            dispatch(fetchAllCategories());
-        })
-        .catch((error)=>{
-            console.error("Error: " +error);
-            dispatch(categoryDelete_X());
-        })
-        .then( () => {
-            return {type:null};  // 'Empty' action object
-        });   
+            .then((response) => {
+                dispatch(categoryDelete_OK());
+                dispatch(fetchAllCategories());
+            })
+            .catch((error) => {
+                console.error("Error: " + error);
+                dispatch(categoryDelete_X());
+            })
+            .then(() => {
+                return {
+                    type: null
+                }; // 'Empty' action object
+            });
     }
 };
 
@@ -141,31 +149,33 @@ export const categoryGetById_X = () => ({
     type: ActionTypes.CATEGORY_GETBYID_X,
 });
 
-export function getCategory(id) { 
+export function getCategory(id) {
     return async (dispatch, getState) => {
         dispatch(categoryGetById_REQ());
-        console.dir("getCategory by this id: "+id);
-        
+        console.dir("getCategory by this id: " + id);
+
         // Here would be some async AJAX call with await...
         // ... or some promises or so
         const ajaxRequest = {
-            method:'get',
+            method: 'get',
             url: API_ROOT + '/Category/' + id,
         };
 
         axios(ajaxRequest)
-        .then((response) => {
-            console.log(response);
-            dispatch(categoryGetById_OK(response.data));
-            //dispatch(fetchAllCategories());
-        })
-        .catch((error)=>{
-            console.error("Error: " +error);
-            dispatch(categoryGetById_X());
-        })
-        .then( () => {
-            return {type:null};  // 'Empty' action object
-        });   
+            .then((response) => {
+                console.log(response);
+                dispatch(categoryGetById_OK(response.data));
+                //dispatch(fetchAllCategories());
+            })
+            .catch((error) => {
+                console.error("Error: " + error);
+                dispatch(categoryGetById_X());
+            })
+            .then(() => {
+                return {
+                    type: null
+                }; // 'Empty' action object
+            });
     }
 };
 
@@ -181,31 +191,33 @@ export const categoryUpdate_X = () => ({
 });
 
 // Helper function, real action function?
-export function updateCategory(category) { 
+export function updateCategory(category) {
     return async (dispatch, getState) => {
         dispatch(categoryUpdate_REQ());
         console.dir(category);
-        
+
         // Here would be some async AJAX call with await...
         // ... or some promises or so
         const ajaxRequest = {
-            method:'put',
+            method: 'put',
             url: API_ROOT + '/category',
             data: category,
         };
 
         axios(ajaxRequest)
-        .then((response) => {
-            dispatch(categoryUpdate_OK());
-            dispatch(fetchAllCategories());
-        })
-        .catch((error)=>{
-            console.error("Error: " +error);
-            dispatch(categoryUpdate_X());
-        })
-        .then( () => {
-            return {type:null};  // 'Empty' action object
-        });   
+            .then((response) => {
+                dispatch(categoryUpdate_OK());
+                dispatch(fetchAllCategories());
+            })
+            .catch((error) => {
+                console.error("Error: " + error);
+                dispatch(categoryUpdate_X());
+            })
+            .then(() => {
+                return {
+                    type: null
+                }; // 'Empty' action object
+            });
     }
 };
 
