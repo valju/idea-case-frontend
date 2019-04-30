@@ -8,8 +8,7 @@ export default class IdeaUpdateView extends Component {
     return (
       <div>
         <h2>Update idea</h2>
-        <p>Idea id digged out of react-router-dom params: {this.props.match.params.id}</p>
-        <IdeaUpdate ideaId={this.props.match.params.id} idea={this.props.location.state.idea} />
+        <IdeaUpdate idea={this.props.location.state.idea} />
       </div>
     );
   }

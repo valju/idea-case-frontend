@@ -70,6 +70,7 @@ class IdeaUpdateForm extends Component {
                 Description: <input
                     id="description"
                     type="text"
+                    size="50"
                     value={this.state.ideaObject.description}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
@@ -83,6 +84,7 @@ class IdeaUpdateForm extends Component {
                     margin="normal"
                 />
                 <br />
+                {/*Not working yet, cannot uncheck the value */}
                 Ready For Comment: <input
                     id="readyForComments"
                     type="checkbox"
@@ -99,14 +101,25 @@ class IdeaUpdateForm extends Component {
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
-                <br />
+                {/* <br />
                 Category ID: <input
                     id="categoryId"
                     type="number"
                     value={this.state.ideaObject.categoryId}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
-                />
+                /> */}
+                <br />
+                {/*Working but the field always show the first option, not the current value*/}
+                Category: 
+                <select id="categoryId" onChange={this.inputFieldValueChanged}>
+                    {
+                        this.props.categories.map((item) =>
+                            <option key={item.id} value={item.id}>{item.name}</option>
+                        )
+
+                    }
+                </select>
 
                 <br />
                 <button type="button" onClick={this.handleSubmit}>

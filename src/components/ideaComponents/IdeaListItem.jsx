@@ -23,7 +23,7 @@ export default class IdeaListItem extends Component {
         </button>
 
         <Link to={{
-          pathname: "/IdeaUpdate/" + this.props.item.id,
+          pathname: "/idea/update/" + this.props.item.id,
           state: { idea: this.props.item }
         }}>
           <button type="button">

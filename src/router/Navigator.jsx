@@ -125,6 +125,9 @@ class Navigator extends Component {
               <Route path="/member/:id" component={MemberDetailsView} />
               <Route exact path="/category/:id" component={CategoryDetailsView} />
 						  <Route exact path="/category/update/:id" component={CategoryUpdateView} />
+              <Route path="/ideas" component={Ideas} />
+              <Route exact path="/idea/:id" component={IdeaDetailsView} />
+              <Route exact path="/idea/update/:id" component={IdeaUpdateView} />
               <Route path="/comments_technical" component={CommentsTechnicalView} />
               {/* <Route path="/category_update/:id" component={CategoryUpdate} /> */}
               <Route render={() => <h1>Page not found</h1>} />
