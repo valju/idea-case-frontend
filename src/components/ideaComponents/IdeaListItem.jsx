@@ -22,7 +22,10 @@ export default class IdeaListItem extends Component {
           DELETE
         </button>
 
-        <Link to={"/IdeaUpdate/" + this.props.item.id}>
+        <Link to={{
+          pathname: "/IdeaUpdate/" + this.props.item.id,
+          state: { idea: this.props.item }
+        }}>
           <button type="button">
             UPDATE
           </button>

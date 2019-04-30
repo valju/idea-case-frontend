@@ -5,17 +5,29 @@ class IdeaUpdateForm extends Component {
         super(props);
         this.state = {
             ideaObject: {
-                id: this.props.ideaId,
+                id: 0,
                 name: '',
                 description: '',
-                budget: '',
+                budget: 0,
                 readyForComments: false,
-                peopleNeeded: '',
-                creationDate: '',
-                lastModified: '',
-                categoryId: ''
+                peopleNeeded: 0,
+                categoryId: 0
             },
         };
+    }
+
+    componentDidMount = () => {
+        this.setState({
+            ideaObject: {
+                id: this.props.idea.id,
+                name: this.props.idea.name,
+                description: this.props.idea.description,
+                budget: this.props.idea.budget,
+                readyForComments: this.props.idea.readyForComments === 1 ? true : false,
+                peopleNeeded: this.props.idea.peopleNeeded,
+                categoryId: this.props.idea.categoryId
+            }
+        })
     }
 
     inputFieldValueChanged = (event) => {
@@ -29,39 +41,25 @@ class IdeaUpdateForm extends Component {
             });
     };
 
-    resetInputBox = () => {
+    toggleCheckboxValue = () => {
         this.setState({
             ideaObject: {
-                id: '',
-                name: '',
-                description: '',
-                budget: '',
-                readyForComments: false,
-                peopleNeeded: '',
-                creationDate: '',
-                lastModified: '',
-                categoryId: ''
+                ...this.state.ideaObject,
+                readyForComments: !this.state.readyForComments,
             }
-        })
+        });
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
 
         const ideaObject = this.state.ideaObject;
-        this.resetInputBox();
         this.props.updateIdeaButtonClicked(ideaObject);
     }
 
     render = () => {
         return (
             <form>
-                {/* Id: <input
-                    id="id"
-                    type="text"
-                    onChange={this.inputFieldValueChanged}
-                    value={this.state.ideaObject.id} />
-                <br /> */}
                 Name: <input
                     id="name"
                     type="text"
@@ -79,23 +77,24 @@ class IdeaUpdateForm extends Component {
                 <br />
                 Budget: <input
                     id="budget"
-                    type="text"
+                    type="number"
                     value={this.state.ideaObject.budget}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
                 <br />
                 Ready For Comment: <input
-                    id="readyForComment"
+                    id="readyForComments"
                     type="checkbox"
-                    value={this.state.ideaObject.readyForComment}
-                    onChange={this.inputFieldValueChanged}
+                    checked={this.state.ideaObject.readyForComments}
+                    value={this.state.ideaObject.readyForComments}
+                    onChange={this.toggleCheckboxValue}
                     margin="normal"
                 />
                 <br />
                 People Needed: <input
                     id="peopleNeeded"
-                    type="text"
+                    type="number"
                     value={this.state.ideaObject.peopleNeeded}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
@@ -103,17 +102,14 @@ class IdeaUpdateForm extends Component {
                 <br />
                 Category ID: <input
                     id="categoryId"
-                    type="text"
+                    type="number"
                     value={this.state.ideaObject.categoryId}
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
 
                 <br />
-
-                <button
-                    type="button"
-                    onClick={this.handleSubmit}>
+                <button type="button" onClick={this.handleSubmit}>
                     UPDATE IDEA
                 </button>
 

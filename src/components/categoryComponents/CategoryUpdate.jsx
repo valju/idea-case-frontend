@@ -1,80 +1,114 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { updateCategory } from '../../actions/category';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { updateCategory } from "../../actions/category";
+import CategoryItem from "./CategoryItem";
+//import { getCategory } from "../../actions/category";
 
 class CategoryUpdate extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            categoryObject: { 
-                id: this.props.categoryId,
-                name: '',
-                description: '',
-                budgetLimit: '' 
-            },
-        };
+  constructor(props) {
+    super(props);
+    this.state = {
+      editedCategory: null
+    };
+  }
+
+  componentDidMount() {
+    //    this.props.categoryGetById(this.props.id);
+    if (this.props.categories.categoryCurrent != null) {
+      this.setState({
+        editedCategory: this.props.categories.categoryCurrent
+      });
+    }
+  }
+
+  inputFieldValueChanged = event => {
+    const updatedField = event.target.id; // = this.state.editedCategory;
+    let updatedValue = event.target.value;
+    if (updatedField === "id" || updatedField === "budgetLimit") {
+      updatedValue = Number(updatedValue);
     }
 
-    inputFieldValueChanged = (event) => {
-        this.setState(
-            {
-                categoryObject:
-                    { ...this.state.categoryObject, [event.target.id]: event.target.value }
-            });
-    };
+    this.setState({
+      editedCategory: {
+        ...this.state.editedCategory,
+        [updatedField]: updatedValue
+      }
+    });
 
-    updateCategoryButtonClicked = () => {
-        const category = this.state.categoryObject;
-        category.id = Number(category.id);  // id to Number
-        category.budgetLimit = Number(category.budgetLimit);
 
-        this.props.updateCategoryLocal(category);
+  };
 
-        // this.setState(
-        //     {
-        //         newCategoryObject:
-        //             { id: "", name: "", budgetLimit: "" },
-        //     }
-        // );
-        // this.props.addCategoryLocal(this.state.newCategoryObject);   // Other way
-    };
+  updateCategory = () => {
+    this.props.updateCategoryLocal(this.state.editedCategory);
+  };
 
-    render = () => {
-        return (
+  render = () => {
+
+
+    return (
+      <div>
+        {this.state.editedCategory === null ? (
+          <p>Waiting server response. Activity indicator could go here.</p>
+        ) : (
             <div>
-                <h2>Category id {this.props.categoryId}</h2>
-                {/* <p>Category id digged out of react-router-dom params: {this.props.categoryId}</p> */}
-                {/* 
-        { (this.props.categories.categoryCurrent === null) 
-                ?
-            <CategoryItem item={{name:"Hard-coded placeholder", budgetLimit:12345}} />
-                :
-            <CategoryItem item={this.props.categories.categoryCurrent} />
-        } */}
-                <p>
-                    Name: <input id="name" type="text" onChange={this.inputFieldValueChanged} value={this.state.categoryObject.name} /><br />
-                    Description: <input id="description" type="text" onChange={this.inputFieldValueChanged} value={this.state.categoryObject.description} /><br />
-                    Budget limit: <input id="budgetLimit" type="text" onChange={this.inputFieldValueChanged} value={this.state.categoryObject.budgetLimit} /><br />
+              <h3>Old object</h3>
+              <CategoryItem item={this.state.editedCategory} />
 
-                    <button type="button" onClick={this.updateCategoryButtonClicked}>UPDATE</button>
-                </p>
-                <p><Link to="/Categories">Back to all categories</Link></p>
+
+              <p>
+                Id:&nbsp;
+                <input
+                  id="id"
+                  type="text"
+                  onChange={this.inputFieldValueChanged}
+                  value={this.state.editedCategory.id}
+                />
+                Name:&nbsp;
+                <input
+                  id="name"
+                  type="text"
+                  onChange={this.inputFieldValueChanged}
+                  value={this.state.editedCategory.name}
+                />
+                <br />
+                Budget (&euro;):{" "}
+                <input
+                  id="budgetLimit"
+                  type="number"
+                  onChange={this.inputFieldValueChanged}
+                  value={this.state.editedCategory.budgetLimit}
+                />
+                <br />
+                Description:{" "}
+                <input
+                  id="description"
+                  type="text"
+                  size="50"
+                  onChange={this.inputFieldValueChanged}
+                  value={this.state.editedCategory.description}
+                />
+                <br />
+                <button type="button" onClick={this.updateCategory}>
+                  SAVE
+                </button>
+              </p>
             </div>
-        );
-    }
+          )}
+      </div>
+    );
+  };
 }
 
-
 const mapDispatchToProps = dispatch => ({
-    updateCategoryLocal: (category) => {
-        dispatch(updateCategory(category));
-      },
+  updateCategoryLocal: category => {
+    dispatch(updateCategory(category));
+  }
 });
-
 const mapStateToProps = state => ({
-    categories: state.categories,
+  categories: state.categories
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryUpdate);
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CategoryUpdate);

@@ -21,7 +21,7 @@ class IdeaUpdate extends Component {
         return (
             <div>
                 <h2>Idea id {this.props.ideaId}</h2>
-                <IdeaUpdateForm ideaId={this.props.ideaId} updateIdeaButtonClicked={this.updateIdeaButtonClicked} />
+                <IdeaUpdateForm idea={this.props.idea} updateIdeaButtonClicked={this.updateIdeaButtonClicked} />
                 <p><Link to="/Ideas">Back to all ideas</Link></p>
             </div>
         );
