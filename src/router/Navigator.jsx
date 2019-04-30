@@ -22,7 +22,6 @@ import IdeaUpdateView from '../views/ideaViews/IdeaUpdateView';
 import Members from '../views/memberViews/Members';
 import CommentsTechnicalView from '../views/commentViews/CommentsTechnicalView';
 import MemberDetailsView from "../views/memberViews/MemberDetailsView";
-import CategoryUpdateView from "../views/categoryViews/CategoryUpdateView";
 
 const styles = theme => ({
   root: {
