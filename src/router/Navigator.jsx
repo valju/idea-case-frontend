@@ -17,6 +17,8 @@ import Categories from '../views/categoryViews/Categories';
 import CategoryDetailsView from '../views/categoryViews/CategoryDetailsView';
 import Members from '../views/memberViews/Members';
 import CommentsTechnicalView from '../views/commentViews/CommentsTechnicalView';
+import MemberDetailsView from "../views/memberViews/MemberDetailsView";
+
 // import CategoryUpdate from '../views/categoryViews/CategoryUpdate';
 
 const styles = theme => ({
@@ -118,6 +120,7 @@ class Navigator extends Component {
               <Route exact path="/" component={Categories} />
               <Route path="/categories" component={Categories} />
               <Route path="/members" component={Members} />
+              <Route path="/member/:id" component={MemberDetailsView} />
               <Route path="/category/:id" component={CategoryDetailsView} />
               <Route path="/comments_technical" component={CommentsTechnicalView} />
               {/* <Route path="/category_update/:id" component={CategoryUpdate} /> */}
@@ -129,6 +132,7 @@ class Navigator extends Component {
       );
     }
   }
+
 
 Navigator.propTypes = {
   classes: PropTypes.object.isRequired,
