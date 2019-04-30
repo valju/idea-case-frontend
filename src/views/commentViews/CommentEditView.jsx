@@ -8,9 +8,7 @@ export default class CommentEditView extends Component {
     return (
       <div>
         <h2>Comment Edit View</h2>
-        <CommentEdit ideaId={this.props.match.params.ideaId}
-          memberId={this.props.match.params.memberId}
-          commentTimeStamp={this.props.match.params.commentTimeStamp} />
+        <CommentEdit id={this.props.match.params.id} />
       </div>
     );
   }

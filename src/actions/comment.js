@@ -92,7 +92,7 @@ export const commentUpdate_X = () => ({
 export function updateComment(comment) {
   return async (dispatch, getState) => {
 
-    dispatch(commentAdd_REQ());
+    dispatch(commentUpdate_REQ());
 
     const ajaxRequest = {
       method: 'put',
@@ -102,12 +102,11 @@ export function updateComment(comment) {
 
     axios(ajaxRequest)
       .then(() => {
-        dispatch(commentAdd_OK());
-        dispatch(fetchAllCommentsByIdeaId(comment.ideaId));
+        dispatch(commentUpdate_OK());
       })
       .catch((error) => {
         console.error("Error: " + error);
-        dispatch(commentAdd_X());
+        dispatch(commentUpdate_X());
       })
       .then(() => {
         return { type: null }; // 'Empty' action object
@@ -127,21 +126,14 @@ export const commentGetOne_X = () => ({
   type: ActionTypes.COMMENT_GETONE_X,
 });
 
-export function fetchOneComment(commentObject) {
+export function fetchOneComment(commentId) {
   return async (dispatch, getState) => {
 
     dispatch(commentGetOne_REQ());
-
-    //let timeStamp = commentObject.commentTimeStamp;
-    //let timeStamp2 = timeStamp.replace("T", " ");
-    //let timeStamp3 = timeStamp2.replace("Z", "");
-
-    // this is a hard-coded timestamp, because of timezone conversion
-    commentObject.commentTimeStamp = "2019-04-24 21:46:25.640";
     
     const ajaxRequest = {
       method: 'get',
-      url: API_ROOT + "/comment/" + commentObject.ideaId + "/" + commentObject.memberId + "?commentTimeStamp=" + commentObject.commentTimeStamp,
+      url: API_ROOT + "/comment/" + commentId,
     };
 
     axios(ajaxRequest)

@@ -8,54 +8,36 @@ class CommentEdit extends Component {
     super(props);
     this.state = {
       commentObject: {
-        ideaId: this.props.ideaId,
-        memberId: this.props.memberId,
-        commentTimeStamp: this.props.commentTimeStamp,
+        id: "N/A",
+        commentText: ""
       }
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      commentObject: {
-        ...this.state.commentObject,
-        ideaId: this.props.ideaId,
-        memberId: this.props.memberId,
-        commentTimeStamp: this.props.commentTimeStamp,
-      }
-    });
-    this.props.getOneCommentLocal(this.state.commentObject);
+  componentWillMount() {
+    this.props.getOneCommentLocal(this.props.id);
   }
 
   inputFieldValueChanged = (event) => {
-    this.setState(
-      {
-        commentObject:
-          { ...this.state.commentObject, commentText: event.target.value }
-      });
+    this.setState({
+      commentObject:
+        { ...this.state.commentObject, commentText: event.target.value, id: this.props.comments.commentCurrent[0].id }
+    });
   };
 
   updateCommentLocal = () => {
-    const comment = this.state.commentObject;
-
-    comment.ideaId = Number(comment.ideaId);
-    comment.memberId = Number(comment.memberId);
-    this.props.updateCommentLocal(comment);
-    this.setState(
-      {
-        commentObject:
-          { ...this.state.commentObject, commentText: "", },
-      }
-    );
+    this.props.updateCommentLocal(this.state.commentObject);
   }
 
 
   render() {
+
     return (
       <div>
         <h4>Edit Comment</h4>
         <p>
-          Comment Text: <input id="commentText" type="text" size="50" onChange={this.inputFieldValueChanged} value={this.state.commentText} /><br />
+          Comment Text: <input id="commentText" type="text" size="50"
+            onChange={this.inputFieldValueChanged} value={this.state.commentObject.commentText} /><br />
           <button type="button" onClick={this.updateCommentLocal}>Edit comment</button>
         </p>
       </div>
@@ -64,8 +46,8 @@ class CommentEdit extends Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  updateCommentLocal: (commentObject) => {
-    dispatch(updateComment(commentObject));
+  updateCommentLocal: (commentId) => {
+    dispatch(updateComment(commentId));
   },
   getOneCommentLocal: (comment) => {
     dispatch(fetchOneComment(comment))
@@ -73,7 +55,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  commentCurrent: state.commentCurrent,
+  comments: state.comments,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentEdit);

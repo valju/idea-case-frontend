@@ -13,7 +13,7 @@ class Navigator extends Component {
     return (
       <Router>
         <div>
-          
+
           <nav>
             <Link to="/"><span>Categories</span></Link>
             -
@@ -28,9 +28,9 @@ class Navigator extends Component {
             <Route path="/members" component={Members} />
             <Route path="/category/:id" component={CategoryDetailsView} />
             <Route path="/comments_technical" component={CommentsTechnicalView} />
-            <Route path="/comment_edit/:ideaId/:memberId/:commentTimeStamp" component={CommentEditView} />
+            <Route path="/comment_edit/:id" component={CommentEditView} />
             {/* <Route path="/category_update/:id" component={CategoryUpdate} /> */}
-            <Route render={ () => <h1>Page not found</h1>} />
+            <Route render={() => <h1>Page not found</h1>} />
           </Switch>
 
         </div>
