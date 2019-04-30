@@ -16,8 +16,11 @@ class CommentList extends Component {
         <ol>
           {
             this.props.comments.commentListByIdeaId.map((item) =>
-              <li key={`${item.id}`}>{item.firstName} {item.lastName} says: {item.commentText}
-                <Link to={`/comment_edit/${item.id}`}> Edit</Link></li>
+              <li key={`${item.id}`}>
+                {item.firstName} {item.lastName} says: {item.commentText}
+                &nbsp;
+                <Link to={`/comment_edit/${item.id}`}>Edit</Link>
+              </li>
             )
           }
         </ol>
