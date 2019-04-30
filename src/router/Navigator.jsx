@@ -18,8 +18,7 @@ import CategoryDetailsView from '../views/categoryViews/CategoryDetailsView';
 import Members from '../views/memberViews/Members';
 import CommentsTechnicalView from '../views/commentViews/CommentsTechnicalView';
 import MemberDetailsView from "../views/memberViews/MemberDetailsView";
-
-// import CategoryUpdate from '../views/categoryViews/CategoryUpdate';
+import CategoryUpdateView from "../views/categoryViews/CategoryUpdateView";
 
 const styles = theme => ({
   root: {
@@ -121,7 +120,8 @@ class Navigator extends Component {
               <Route path="/categories" component={Categories} />
               <Route path="/members" component={Members} />
               <Route path="/member/:id" component={MemberDetailsView} />
-              <Route path="/category/:id" component={CategoryDetailsView} />
+              <Route exact path="/category/:id" component={CategoryDetailsView} />
+						  <Route exact path="/category/update/:id" component={CategoryUpdateView} />
               <Route path="/comments_technical" component={CommentsTechnicalView} />
               {/* <Route path="/category_update/:id" component={CategoryUpdate} /> */}
               <Route render={() => <h1>Page not found</h1>} />
