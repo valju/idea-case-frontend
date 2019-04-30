@@ -15,10 +15,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import Categories from '../views/categoryViews/Categories';
 import CategoryDetailsView from '../views/categoryViews/CategoryDetailsView';
-import Members from '../views/memberViews/Members';
-import CommentsTechnicalView from '../views/commentViews/CommentsTechnicalView';
-import MemberDetailsView from "../views/memberViews/MemberDetailsView";
 import CategoryUpdateView from "../views/categoryViews/CategoryUpdateView";
+import Members from '../views/memberViews/Members';
+import MemberDetailsView from "../views/memberViews/MemberDetailsView";
+import CommentsTechnicalView from '../views/commentViews/CommentsTechnicalView';
+import CommentEditView from '../views/commentViews/CommentEditView';
 
 const styles = theme => ({
   root: {
@@ -63,7 +64,6 @@ const styles = theme => ({
 
   }
 });
-
 
 class Navigator extends Component {
   state = {
@@ -123,8 +123,8 @@ class Navigator extends Component {
               <Route exact path="/category/:id" component={CategoryDetailsView} />
 						  <Route exact path="/category/update/:id" component={CategoryUpdateView} />
               <Route path="/comments_technical" component={CommentsTechnicalView} />
-              {/* <Route path="/category_update/:id" component={CategoryUpdate} /> */}
-              <Route render={() => <h1>Page not found</h1>} />
+              <Route path="/comment_edit/:id" component={CommentEditView} />
+              <Route render={ () => <h1>Page not found</h1>} />
             </Switch>
 
           </div>
