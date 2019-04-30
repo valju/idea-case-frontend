@@ -61,6 +61,25 @@ export default function categories(state = initialState, action) {
                 isLoading: false,
             };
 
+
+            case ActionTypes.CATEGORY_UPDATE_REQ:
+            return {
+              ...state,
+              isLoading: true
+            };
+          case ActionTypes.CATEGORY_UPDATED_OK:
+            return {
+              ...state,
+              categoryCurrent: action.category,
+              isLoading: false
+            };
+          case ActionTypes.CATEGORY_UPDATE_X:
+            return {
+              ...state,
+              isLoading: false
+            };
+      
+
         /*
         case ActionTypes.CATEGORY_RANDOMIZED_REQ:
             return {
