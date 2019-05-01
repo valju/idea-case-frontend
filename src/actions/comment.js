@@ -150,4 +150,41 @@ export function fetchOneComment(commentId) {
   }
 };
 
+// COMMENT DELETE ONE
+export const commentDelete_REQ = () => ({
+  type: ActionTypes.COMMENT_DELETE_REQ,
+});
+export const commentDelete_OK = (comment) => ({
+  type: ActionTypes.COMMENT_DELETE_OK,
+  comment: comment
+});
+export const commentDelete_X = () => ({
+  type: ActionTypes.COMMENT_DELETE_X,
+});
+
+export function deleteComment(commentObject) {
+  return async (dispatch, getState) => {
+
+    dispatch(commentDelete_REQ());
+    
+    const ajaxRequest = {
+      method: 'delete',
+      url: API_ROOT + "/comment/" + commentObject.id,
+    };
+
+    axios(ajaxRequest)
+      .then((response) => {
+        dispatch(commentDelete_OK());
+        dispatch(fetchAllCommentsByIdeaId(commentObject.ideaId));
+      })
+      .catch((error) => {
+        console.error("Error: " + error);
+        dispatch(commentDelete_X());
+      })
+      .then(() => {
+        return { type: null }; // 'Empty' action object
+      });
+  }
+};
+
 
