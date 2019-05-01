@@ -118,9 +118,8 @@ export function updateComment(comment) {
 export const commentGetOne_REQ = () => ({
   type: ActionTypes.COMMENT_GETONE_REQ,
 });
-export const commentGetOne_OK = (comment) => ({
+export const commentGetOne_OK = () => ({
   type: ActionTypes.COMMENT_GETONE_OK,
-  comment: comment
 });
 export const commentGetOne_X = () => ({
   type: ActionTypes.COMMENT_GETONE_X,
