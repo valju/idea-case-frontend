@@ -15,7 +15,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import Categories from '../views/categoryViews/Categories';
 import CategoryDetailsView from '../views/categoryViews/CategoryDetailsView';
-import CategoryUpdateView from "../views/categoryViews/CategoryUpdateView";
+import CategoryUpdateView from '../views/categoryViews/CategoryUpdateView';
+import Ideas from '../views/ideaViews/Ideas';
+import IdeaDetailsView from '../views/ideaViews/IdeaDetailsView';
+import IdeaUpdateView from '../views/ideaViews/IdeaUpdateView';
 import Members from '../views/memberViews/Members';
 import MemberDetailsView from "../views/memberViews/MemberDetailsView";
 import CommentsTechnicalView from '../views/commentViews/CommentsTechnicalView';
@@ -122,6 +125,9 @@ class Navigator extends Component {
               <Route path="/member/:id" component={MemberDetailsView} />
               <Route exact path="/category/:id" component={CategoryDetailsView} />
 						  <Route exact path="/category/update/:id" component={CategoryUpdateView} />
+              <Route path="/ideas" component={Ideas} />
+              <Route exact path="/idea/:id" component={IdeaDetailsView} />
+              <Route exact path="/idea/update/:id" component={IdeaUpdateView} />
               <Route path="/comments_technical" component={CommentsTechnicalView} />
               <Route path="/comment_edit/:id" component={CommentEditView} />
               <Route render={ () => <h1>Page not found</h1>} />
