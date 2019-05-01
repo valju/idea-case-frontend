@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchAllIdeaMember } from '../../actions/ideaMember';
+import IdeaMemberListItem from './IdeaMemberListItem';
 
 class IdeaMemberList extends Component {
   
@@ -15,7 +16,16 @@ class IdeaMemberList extends Component {
     return (
       <div>
         <h4>List of Idea-Member</h4>
-        
+        <ol>
+          {
+            this.props.ideaMembers.ideaMemberList.map(item => 
+              <IdeaMemberListItem 
+                key={`${item.ideaId}-${item.memberId}`}
+                item={item}
+              />
+            )
+          }
+        </ol>
       </div>
     );
   }
