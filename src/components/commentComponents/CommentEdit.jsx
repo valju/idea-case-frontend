@@ -21,7 +21,7 @@ class CommentEdit extends Component {
     if (this.props.comments.commentCurrent !== prevProps.comments.commentCurrent) {
       this.setState({
         commentObject:
-          { ...this.state.commentObject, id: this.props.comments.commentCurrent[0].id, commentText: this.props.comments.commentCurrent[0].commentText, }
+          { ...this.state.commentObject, id: this.props.comments.commentCurrent.id, commentText: this.props.comments.commentCurrent.commentText, }
       });
     }
   }

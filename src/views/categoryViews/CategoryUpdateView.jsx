@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import CategoryUpdate from "../../components/categoryComponents/CategoryUpdate";
+import React, { Component } from 'react';
+import CategoryUpdate from '../../components/categoryComponents/CategoryUpdate';
 
 export default class CategoryUpdateView extends Component {
   render() {

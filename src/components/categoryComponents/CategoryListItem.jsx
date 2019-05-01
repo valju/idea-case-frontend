@@ -15,7 +15,7 @@ export default class CategoryListItem extends Component {
         <Link to={ `/category_update/${this.props.item.id}` }>Edit</Link>
         &nbsp;&nbsp;
         */}
-        <button type="button" onClick={ () => this.props.delete(this.props.item.id) }>Del</button>       
+        <button type="button" onClick={ () => this.props.delete(this.props.item.id) }>Delete</button>       
         <hr />
       </li>
     );

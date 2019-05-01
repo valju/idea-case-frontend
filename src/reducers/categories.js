@@ -67,7 +67,7 @@ export default function categories(state = initialState, action) {
               ...state,
               isLoading: true
             };
-          case ActionTypes.CATEGORY_UPDATED_OK:
+          case ActionTypes.CATEGORY_UPDATE_OK:
             return {
               ...state,
               categoryCurrent: action.category,
