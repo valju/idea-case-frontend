@@ -23,7 +23,7 @@ class CategoryDetails extends Component {
           )}
 
         <p>
-          <Link to="/categories">Back</Link>
+          <Link to='/categories'>Back</Link>
         </p>
       </div>
     );
@@ -31,17 +31,17 @@ class CategoryDetails extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  categoryGetById: id => {
+  categoryGetById: (id) => {
     dispatch(getCategory(id));
   }
 });
 
 const mapStateToProps = state => ({
-  categories: state.categories
+  categories: state.categories,
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(CategoryDetails);
 
