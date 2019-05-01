@@ -118,8 +118,9 @@ export function updateComment(comment) {
 export const commentGetOne_REQ = () => ({
   type: ActionTypes.COMMENT_GETONE_REQ,
 });
-export const commentGetOne_OK = () => ({
+export const commentGetOne_OK = (comment) => ({
   type: ActionTypes.COMMENT_GETONE_OK,
+  comment: comment
 });
 export const commentGetOne_X = () => ({
   type: ActionTypes.COMMENT_GETONE_X,
@@ -153,9 +154,8 @@ export function fetchOneComment(commentId) {
 export const commentDelete_REQ = () => ({
   type: ActionTypes.COMMENT_DELETE_REQ,
 });
-export const commentDelete_OK = (comment) => ({
+export const commentDelete_OK = () => ({
   type: ActionTypes.COMMENT_DELETE_OK,
-  comment: comment
 });
 export const commentDelete_X = () => ({
   type: ActionTypes.COMMENT_DELETE_X,
