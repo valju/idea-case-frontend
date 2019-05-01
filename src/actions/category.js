@@ -120,14 +120,14 @@ export function deleteCategory(id) {
 
 // Category GET One By Id
 export const categoryGetById_REQ = () => ({
-  type: ActionTypes.CATEGORY_GETBYID_REQ
+  type: ActionTypes.CATEGORY_GETBYID_REQ,
 });
-export const categoryGetById_OK = category => ({
+export const categoryGetById_OK = (category) => ({
   type: ActionTypes.CATEGORY_GETBYID_OK,
-  category: category
+  category: category,
 });
 export const categoryGetById_X = () => ({
-  type: ActionTypes.CATEGORY_GETBYID_X
+  type: ActionTypes.CATEGORY_GETBYID_X,
 });
 
 export function getCategory(id) {
@@ -138,15 +138,15 @@ export function getCategory(id) {
     // Here would be some async AJAX call with await...
     // ... or some promises or so
     const ajaxRequest = {
-      method: "get",
-      url: API_ROOT + "/category/" + id
+      method: 'get',
+      url: API_ROOT + '/category/' + id
     };
 
     axios(ajaxRequest)
-      .then(response => {
+      .then((response) => {
         dispatch(categoryGetById_OK(response.data[0]));
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error: " + error);
         dispatch(categoryGetById_X());
       })
@@ -160,13 +160,13 @@ export function getCategory(id) {
 
 //Category UPDATE One By Id
 export const categoryUpdate_REQ = () => ({
-  type: ActionTypes.CATEGORY_UPDATE_REQ
+  type: ActionTypes.CATEGORY_UPDATE_REQ,
 });
 export const categoryUpdate_OK = () => ({
-  type: ActionTypes.CATEGORY_UPDATE_OK
+  type: ActionTypes.CATEGORY_UPDATE_OK,
 });
 export const categoryUpdate_X = () => ({
-  type: ActionTypes.CATEGORY_UPDATE_X
+  type: ActionTypes.CATEGORY_UPDATE_X,
 });
 
 export function updateCategory(category) {
@@ -177,17 +177,17 @@ export function updateCategory(category) {
     // Here would be some async AJAX call with await...
     // ... or some promises or so
     const ajaxRequest = {
-      method: "put",
-      url: API_ROOT + "/category/",
+      method: 'put',
+      url: API_ROOT + '/category/',
       data: category,
     };
 
     axios(ajaxRequest)
-      .then(response => {
+      .then((response) => {
         dispatch(categoryUpdate_OK());
         dispatch(fetchAllCategories());
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error: " + error);
         dispatch(categoryUpdate_X());
       })

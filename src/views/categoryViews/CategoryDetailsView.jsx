@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import CategoryDetails from "../../components/categoryComponents/CategoryDetails";
+import React, { Component } from 'react';
+import CategoryDetails from '../../components/categoryComponents/CategoryDetails';
 
 export default class CategoryDetailsView extends Component {
   render() {
