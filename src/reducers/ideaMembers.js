@@ -3,7 +3,7 @@ import ActionTypes from '../actions/ActionTypes';
 export const initialState = {
   isLoading: false,
   ideaMemberList: [],
-  ideaMemberCurrent: [],  
+  ideaMemberCurrent: {},  
 }
 
 export default function ideaMembers(state = initialState, action) {
@@ -27,6 +27,25 @@ export default function ideaMembers(state = initialState, action) {
         isLoading: false,
       }
 
+    case ActionTypes.IDEA_MEMBER_GETBYID_REQ:
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case ActionTypes.IDEA_MEMBER_GETBYID_OK:
+     return {
+       ...state,
+       isLoading: false,
+       ideaMemberCurrent: action.ideaMember
+     }
+
+    case ActionTypes.IDEA_MEMBER_GETBYID_X:
+      return {
+        ...state,
+        isLoading: false,
+      }
+      
     default:
       return state;
 
