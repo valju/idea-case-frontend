@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addComment } from '../../actions/comment';
 import { fetchAllmembers } from '../../actions/member';
+import { fetchAllIdeas } from '../../actions/idea';
 
 class CommentAdd extends Component {
 
@@ -15,6 +16,7 @@ class CommentAdd extends Component {
 
   componentDidMount() {
     this.props.membersFetchAllLocal();
+    this.props.fetchAllIdeasLocal();
   }
 
   inputFieldValueChanged = (event) => {
@@ -50,16 +52,20 @@ class CommentAdd extends Component {
   render() {
     return (
       <div>
-        <h4>New Comment</h4>
-        <select id="memberId" defaultValue="101" onChange={this.inputFieldValueChanged}>
+        <h4>Add new Comment</h4>
+        <select id="memberId" onChange={this.inputFieldValueChanged}>
           {
             this.props.members.memberList.map((item) =>
               <option key={item.id} value={item.id}>{item.firstName} {item.lastName}</option>
             )
           }
         </select>
-        <select id="ideaId" defaultValue="1002" onChange={this.inputFieldValueChanged}>
-          <option value="1002">1002</option>
+        <select id="ideaId" onChange={this.inputFieldValueChanged}>
+        {
+            this.props.ideas.ideaList.map((item) =>
+              <option key={item.id} value={item.id}>{item.name}</option>
+            )
+          }
         </select>
         <p>
           Comment Text: <input id="commentText" type="text" size="50" onChange={this.inputFieldValueChanged} value={this.state.newComment.commentText} /><br />
@@ -77,10 +83,14 @@ const mapDispatchToProps = dispatch => ({
   membersFetchAllLocal: () => {
     dispatch(fetchAllmembers());
   },
+  fetchAllIdeasLocal: () => {
+    dispatch(fetchAllIdeas());
+  },
 });
 
 const mapStateToProps = state => ({
   members: state.members,
+  ideas: state.ideas,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentAdd);
