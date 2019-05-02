@@ -42,7 +42,7 @@ class CategoryUpdate extends Component {
     updateCategory = () => {
         this.props.updateCategoryLocal(this.state.editedCategory);
 
-        if (updateCategory) {
+        if (updateCategory && this.state.editedCategory.name != "") {
             alert("Update successful!")
         } else {
             alert("Try again.")
