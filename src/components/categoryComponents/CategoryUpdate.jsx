@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { updateCategory } from "../../actions/category";
 import CategoryItem from "./CategoryItem";
 import { getCategory } from "../../actions/category";
+import { Link } from "react-router-dom"
 
 class CategoryUpdate extends Component {
   constructor(props) {
@@ -40,6 +41,12 @@ class CategoryUpdate extends Component {
 
   updateCategory = () => {
     this.props.updateCategoryLocal(this.state.editedCategory);
+
+    if (updateCategory) {
+      alert("Update successful!")
+    } else {
+      alert("Try again.")
+    }
   };
 
   render = () => {
