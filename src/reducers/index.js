@@ -4,6 +4,7 @@ import categories from './categories';
 import ideas from './ideas';
 import members from './members';
 import comments from './comments';
+import ideaMembers from './ideaMembers';
 
 const rootReducer = () => (
     combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = () => (
         ideas,
         members,
         comments,
+        ideaMembers,
     })
 );
 

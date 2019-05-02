@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchAllCommentsByIdeaId } from '../../actions/comment';
+import { fetchAllCommentsByIdeaId, deleteComment } from '../../actions/comment';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
@@ -10,6 +10,7 @@ class CommentList extends Component {
   }
 
   render() {
+    console.log(this.props.comments.commentListByIdeaId)
     return (
       <div>
         <h4>List of ideas with comments (Currently for Idea with id 1002)</h4>
@@ -20,6 +21,7 @@ class CommentList extends Component {
                 {item.firstName} {item.lastName} says: {item.commentText}
                 &nbsp;
                 <Link to={`/comment_edit/${item.id}`}>Edit</Link>
+                <button type="button" onClick={() => this.props.deleteCommentLocal(item)}>Delete</button>
               </li>
             )
           }
@@ -32,6 +34,9 @@ class CommentList extends Component {
 const mapDispatchToProps = dispatch => ({
   commentsFetchByIdeaId: () => {
     dispatch(fetchAllCommentsByIdeaId());
+  },
+  deleteCommentLocal: (commentObject) => {
+    dispatch(deleteComment(commentObject))
   },
 });
 
