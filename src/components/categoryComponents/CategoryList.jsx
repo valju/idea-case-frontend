@@ -10,6 +10,7 @@ class CategoryList extends Component {
   }
 
   render() {
+    console.log(this.props.categories)
     return (
       <div>
         <h4>List of Categories</h4>
