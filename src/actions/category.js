@@ -1,6 +1,8 @@
 import ActionTypes from './ActionTypes';
 import axios from 'axios';
-import { API_ROOT } from '../constants/AppConstants';
+import {
+  API_ROOT
+} from '../constants/AppConstants';
 
 // ACTION CREATORS (Action object creator functions)
 
@@ -35,7 +37,9 @@ export function fetchAllCategories() {
         dispatch(categoriesAll_X());
       })
       .then(() => {
-        return { type: null }; // 'Empty' action object
+        return {
+          type: null
+        }; // 'Empty' action object
       });
   }
 };
@@ -74,7 +78,9 @@ export function addCategory(category) {
         dispatch(categoryAdd_X());
       })
       .then(() => {
-        return { type: null }; // 'Empty' action object
+        return {
+          type: null
+        }; // 'Empty' action object
       });
   }
 };
@@ -113,7 +119,9 @@ export function deleteCategory(id) {
         dispatch(categoryDelete_X());
       })
       .then(() => {
-        return { type: null }; // 'Empty' action object
+        return {
+          type: null
+        }; // 'Empty' action object
       });
   }
 };
@@ -162,8 +170,9 @@ export function getCategory(id) {
 export const categoryUpdate_REQ = () => ({
   type: ActionTypes.CATEGORY_UPDATE_REQ,
 });
-export const categoryUpdate_OK = () => ({
+export const categoryUpdate_OK = (category) => ({
   type: ActionTypes.CATEGORY_UPDATE_OK,
+  category,
 });
 export const categoryUpdate_X = () => ({
   type: ActionTypes.CATEGORY_UPDATE_X,
@@ -184,7 +193,7 @@ export function updateCategory(category) {
 
     axios(ajaxRequest)
       .then((response) => {
-        dispatch(categoryUpdate_OK());
+        dispatch(categoryUpdate_OK(category));
         dispatch(fetchAllCategories());
       })
       .catch((error) => {
@@ -198,5 +207,3 @@ export function updateCategory(category) {
       });
   };
 }
-
-
