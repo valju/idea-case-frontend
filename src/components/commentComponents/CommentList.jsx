@@ -10,6 +10,7 @@ class CommentList extends Component {
   }
 
   render() {
+    console.log(this.props.comments.commentListByIdeaId)
     return (
       <div>
         <h4>List of ideas with comments (Currently for Idea with id 1002)</h4>
