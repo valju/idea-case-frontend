@@ -91,6 +91,9 @@ class CategoryUpdate extends Component {
                 <button type="button" onClick={this.updateCategory}>
                   SAVE
                 </button>
+                <p>
+                  <Link to="/categories">Back</Link>
+                </p>
               </p>
             </div>
           )}
