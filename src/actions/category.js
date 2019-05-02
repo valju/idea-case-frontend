@@ -132,7 +132,6 @@ export const categoryGetById_X = () => ({
 
 export function getCategory(id) {
   return async (dispatch, getState) => {
-
     dispatch(categoryGetById_REQ());
     console.dir("Get category with this id: " + id);
 
@@ -140,25 +139,26 @@ export function getCategory(id) {
     // ... or some promises or so
     const ajaxRequest = {
       method: 'get',
-      url: API_ROOT + '/category/' + id,
+      url: API_ROOT + '/category/' + id
     };
 
     axios(ajaxRequest)
       .then((response) => {
-        dispatch(categoryGetById_OK(response.data));
+        dispatch(categoryGetById_OK(response.data[0]));
       })
       .catch((error) => {
         console.error("Error: " + error);
         dispatch(categoryGetById_X());
       })
       .then(() => {
-        return { type: null }; // 'Empty' action object
+        return {
+          type: null
+        }; // 'Empty' action object
       });
-  }
-};
+  };
+}
 
-/*
-// Category UPDATE One By Id
+//Category UPDATE One By Id
 export const categoryUpdate_REQ = () => ({
   type: ActionTypes.CATEGORY_UPDATE_REQ,
 });
@@ -178,7 +178,7 @@ export function updateCategory(category) {
     // ... or some promises or so
     const ajaxRequest = {
       method: 'put',
-      url: API_ROOT + '/category',
+      url: API_ROOT + '/category/',
       data: category,
     };
 
@@ -196,38 +196,7 @@ export function updateCategory(category) {
           type: null
         }; // 'Empty' action object
       });
-  }
-};
+  };
+}
 
-// Category GET One Random
 
-export const categoryRandomized_REQ = () => ({
-    type: ActionTypes.CATEGORY_RANDOMIZED_REQ,
-});
-export const categoryRandomized_OK = (id) => ({
-    type: ActionTypes.CATEGORY_RANDOMIZED_OK,
-    id: id,
-});
-export const categoryRandomized_X = () => ({
-    type: ActionTypes.CATEGORY_RANDOMIZED_X,
-});
-
-// Helper function, real action function?
-export function randomizeCategory() { 
-    return async (dispatch, getState) => {
-        dispatch(categoryRandomized_REQ());
-        // Here would be some async AJAX call with await...
-        // ... or some promises or so
-        const categoryList = (getState()).categories.categoryList;
-        //const {categoryList} = getState().categories;
-        console.dir(categoryList);
-
-        if(!categoryList || categoryList.length ===0) {
-            dispatch(categoryRandomized_X());
-        } else {
-            let randomizedId = Math.floor(Math.random*categoryList.length);
-            dispatch(categoryRandomized_OK(randomizedId));
-        }
-    }
-};
-*/
