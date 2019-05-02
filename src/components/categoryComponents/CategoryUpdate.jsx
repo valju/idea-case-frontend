@@ -56,10 +56,10 @@ class CategoryUpdate extends Component {
 
 
               <p>
-                Id:&nbsp;
+
                 <input
                   id="id"
-                  type="text"
+                  type="hidden"
                   onChange={this.inputFieldValueChanged}
                   value={this.state.editedCategory.id}
                 />
