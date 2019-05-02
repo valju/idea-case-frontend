@@ -15,7 +15,7 @@ class CommentAdd extends Component {
   }
 
   componentDidMount() {
-    this.props.membersFetchAllLocal();
+    this.props.fetchAllMembersLocal();
     this.props.fetchAllIdeasLocal();
   }
 
@@ -80,7 +80,7 @@ const mapDispatchToProps = dispatch => ({
   addCommentLocal: (comment) => {
     dispatch(addComment(comment));
   },
-  membersFetchAllLocal: () => {
+  fetchAllMembersLocal: () => {
     dispatch(fetchAllmembers());
   },
   fetchAllIdeasLocal: () => {
