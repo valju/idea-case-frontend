@@ -1,50 +1,41 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import CategoryItem from "./MemberItem";
-import { getCategory } from "../../actions/category";
 import { Link } from "react-router-dom";
+import { getMember } from "../../actions/member";
+import MemberItem from "./MemberItem";
 
-class CategoryDetails extends Component {
-  componentDidMount = () => {
-    this.props.categoryGetById(this.props.match.params.id);
-  };
+class MemberDetails extends Component {
+	componentDidMount() {
+		this.props.memberGetById(this.props.id);
+	}
 
-  render = () => {
-    return (
-      <div>
-        <h2>One Category</h2>
-        <p>
-          Category id digged out of react-router-dom params:{" "}
-          {this.props.match.params.id}
-        </p>
-
-        {this.props.categories.categoryCurrent === null ? (
-          <CategoryItem
-            item={{ name: "Hard-coded placeholder", budgetLimit: 12345 }}
-          />
-        ) : (
-          <CategoryItem item={this.props.categories.categoryCurrent} />
-        )}
-
-        <p>
-          <Link to="/Categories">Back to all categories</Link>
-        </p>
-      </div>
-    );
-  };
+	render() {
+		return (
+			<div>
+				{this.props.members.memberCurrent === null ? (
+					<p>Waiting server response. Activity indicator could go here.</p>
+				) : (
+					<MemberItem item={this.props.members.memberCurrent[0]} />
+				)}
+				<p>
+					<Link to="/members">Back</Link>
+				</p>
+			</div>
+		);
+	}
 }
 
 const mapDispatchToProps = dispatch => ({
-  categoryGetById: id => {
-    dispatch(getCategory(id));
-  }
+	memberGetById: id => {
+		dispatch(getMember(id));
+	}
 });
 
 const mapStateToProps = state => ({
-  categories: state.categories
+	members: state.members
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CategoryDetails);
+	mapStateToProps,
+	mapDispatchToProps
+)(MemberDetails);

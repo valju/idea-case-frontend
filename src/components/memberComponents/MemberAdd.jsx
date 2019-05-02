@@ -7,7 +7,6 @@ class MemberAdd extends Component {
     super(props);
     this.state = {
       newMemberObject: {
-        id: null,
         firstName: null,
         lastName: null,
         email: null
@@ -29,7 +28,7 @@ class MemberAdd extends Component {
     this.props.addMemberLocal(member);
 
     this.setState({
-      newMemberObject: { id: "", firstname: "", lastname: "", email: "" }
+      newMemberObject: { firstname: "", lastname: "", email: "" }
     });
   };
   render = () => {
@@ -37,14 +36,6 @@ class MemberAdd extends Component {
       <div>
         <h4>New Member</h4>
         <p>
-          Id:{" "}
-          <input
-            id="id"
-            type="text"
-            onChange={this.inputFieldValueChanged}
-            value={this.state.newMemberObject.id}
-          />
-          <br />
           FirstName:{" "}
           <input
             id="firstName"

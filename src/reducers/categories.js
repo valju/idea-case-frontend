@@ -1,6 +1,6 @@
 import ActionTypes from '../actions/ActionTypes';
 
-//Define initial states of reducer
+// Define initial states of reducer
 export const initialState = {
     isLoading: false,
     categoryList: [],
@@ -61,6 +61,25 @@ export default function categories(state = initialState, action) {
                 isLoading: false,
             };
 
+
+            case ActionTypes.CATEGORY_UPDATE_REQ:
+            return {
+              ...state,
+              isLoading: true
+            };
+          case ActionTypes.CATEGORY_UPDATE_OK:
+            return {
+              ...state,
+              categoryCurrent: action.category,
+              isLoading: false
+            };
+          case ActionTypes.CATEGORY_UPDATE_X:
+            return {
+              ...state,
+              isLoading: false
+            };
+      
+
         /*
         case ActionTypes.CATEGORY_RANDOMIZED_REQ:
             return {
@@ -79,6 +98,7 @@ export default function categories(state = initialState, action) {
                 isLoading: false,
             };
         */
+       
         case null:
             return state;
 

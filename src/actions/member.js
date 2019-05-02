@@ -104,10 +104,10 @@ export function deleteMember(id) {
       method: "delete",
       url: API_ROOT + "/member/" + id
       /*
-            params: {
-                id:id,
-            }
-            */
+				  params: {
+					  id:id,
+				  }
+				  */
     };
 
     axios(ajaxRequest)
