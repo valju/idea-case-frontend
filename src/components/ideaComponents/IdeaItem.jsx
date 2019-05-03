@@ -12,6 +12,7 @@ export default class IdeaItem extends Component {
         <span> Ready for comments: {this.props.item.readyForComments === "1" ? "Yes" : "No"} </span><br />
         <span> Creation Date: {this.props.item.creationDate} </span><br />
         <span> CategoryID: {this.props.item.categoryId} </span>
+
       </div>
     );
   }

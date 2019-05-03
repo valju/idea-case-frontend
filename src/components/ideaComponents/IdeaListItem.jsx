@@ -6,9 +6,12 @@ export default class IdeaListItem extends Component {
   render() {
     return (
       <li>
+        <IdeaItem item={this.props.item} />
+        &nbsp;&nbsp;
         <Link to={"/Idea/" + this.props.item.id}>
-          <IdeaItem item={this.props.item} />
+          View
         </Link>
+        &nbsp;&nbsp;
         <span> </span> {/* Just one space added before delete button */}
         <button
           type="button"
@@ -26,6 +29,7 @@ export default class IdeaListItem extends Component {
           <button type="button">
             UPDATE
           </button>
+
         </Link>
         <hr />
       </li>
