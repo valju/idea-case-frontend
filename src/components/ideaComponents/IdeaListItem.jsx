@@ -27,6 +27,7 @@ export default class IdeaListItem extends Component {
             UPDATE
           </button>
         </Link>
+        <hr />
       </li>
     );
   }

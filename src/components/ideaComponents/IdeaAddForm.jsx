@@ -108,22 +108,15 @@ class IdeaAddForm extends Component {
           margin="normal"
         />
         <br />
-        Category ID:{" "}
-        <input
-          id="categoryId"
-          type="number"
-          value={this.state.newIdeaObject.categoryId}
-          onChange={this.inputFieldValueChanged}
-          margin="normal"
-          placeholder="required"
-          required={true}
-        />
-        {/* <select name="cars">
-          <option value="volvo">Volvo</option>{" "}
-          <option value="saab">Saab</option>
-          <option value="fiat">Fiat</option>
-          <option value="audi">Audi</option>
-        </select> */}
+        Category:
+                <select id="categoryId" onChange={this.inputFieldValueChanged}>
+          {
+            this.props.categories.map((item) =>
+              <option key={item.id} value={item.id} > {item.name} </option>
+            )
+
+          }
+        </select>
         <br />
         <button type="button" onClick={this.handleSubmit}>
           ADD NEW IDEA

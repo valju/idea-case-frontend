@@ -5,13 +5,13 @@ export default class IdeaItem extends Component {
   render() {
     return (
       <div>
-        <p> Idea: {this.props.item.name} </p>
-        <p> Description: {this.props.item.description} </p>
-        <p> Budget: {this.props.item.budget} euros </p>
-        <p> People Needed: {this.props.item.peopleNeeded} </p>
-        <p> Ready for comments: {this.props.item.readyForComments} </p>
-        <p> Creation Date: {this.props.item.creationDate} </p>
-        <p> CategoryID: {this.props.item.categoryId} </p>
+        <span> Idea: {this.props.item.name} </span><br />
+        <span> Description: {this.props.item.description} </span><br />
+        <span> Budget: {this.props.item.budget} euros </span><br />
+        <span> People Needed: {this.props.item.peopleNeeded} </span><br />
+        <span> Ready for comments: {this.props.item.readyForComments === "1" ? "Yes" : "No"} </span><br />
+        <span> Creation Date: {this.props.item.creationDate} </span><br />
+        <span> CategoryID: {this.props.item.categoryId} </span>
       </div>
     );
   }
