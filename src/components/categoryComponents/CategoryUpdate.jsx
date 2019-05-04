@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateCategory } from "../../actions/category";
 import CategoryItem from "./CategoryItem";
-//import { getCategory } from "../../actions/category";
+// import { getCategory } from "../../actions/category";
+import { Link } from "react-router-dom";
 
 class CategoryUpdate extends Component {
   constructor(props) {
@@ -13,7 +14,6 @@ class CategoryUpdate extends Component {
   }
 
   componentDidMount() {
-    //    this.props.categoryGetById(this.props.id);
     if (this.props.categories.categoryCurrent != null) {
       this.setState({
         editedCategory: this.props.categories.categoryCurrent
@@ -27,73 +27,76 @@ class CategoryUpdate extends Component {
     if (updatedField === "id" || updatedField === "budgetLimit") {
       updatedValue = Number(updatedValue);
     }
-
     this.setState({
       editedCategory: {
         ...this.state.editedCategory,
         [updatedField]: updatedValue
       }
     });
-
-
   };
 
   updateCategory = () => {
     this.props.updateCategoryLocal(this.state.editedCategory);
+    if (updateCategory && this.state.editedCategory.name !== "") {
+      alert("Update successful!")
+    } else {
+      alert("Try again.")
+    }
   };
 
   render = () => {
-
 
     return (
       <div>
         {this.state.editedCategory === null ? (
           <p>Waiting server response. Activity indicator could go here.</p>
         ) : (
-            <div>
-              <h3>Old object</h3>
-              <CategoryItem item={this.state.editedCategory} />
+          <div>
+            <h3>Old object</h3>
+            <CategoryItem item={this.state.editedCategory} />
 
-
+            <p>
+              <input
+                id="id"
+                type="hidden"
+                onChange={this.inputFieldValueChanged}
+                value={this.state.editedCategory.id}
+              />
+              Name:&nbsp;
+              <input
+                id="name"
+                type="text"
+                onChange={this.inputFieldValueChanged}
+                value={this.state.editedCategory.name}
+              />
+              <br />
+              Budget (&euro;):{" "}
+              <input
+                id="budgetLimit"
+                type="number"
+                onChange={this.inputFieldValueChanged}
+                value={this.state.editedCategory.budgetLimit}
+              />
+              <br />
+              Description:{" "}
+              <input
+                id="description"
+                type="text"
+                size="50"
+                onChange={this.inputFieldValueChanged}
+                value={this.state.editedCategory.description}
+              />
+              <br />
+              <br />
+              <button type="button" onClick={this.updateCategory}>
+                SAVE
+              </button>
               <p>
-                Id:&nbsp;
-                <input
-                  id="id"
-                  type="text"
-                  onChange={this.inputFieldValueChanged}
-                  value={this.state.editedCategory.id}
-                />
-                Name:&nbsp;
-                <input
-                  id="name"
-                  type="text"
-                  onChange={this.inputFieldValueChanged}
-                  value={this.state.editedCategory.name}
-                />
-                <br />
-                Budget (&euro;):{" "}
-                <input
-                  id="budgetLimit"
-                  type="number"
-                  onChange={this.inputFieldValueChanged}
-                  value={this.state.editedCategory.budgetLimit}
-                />
-                <br />
-                Description:{" "}
-                <input
-                  id="description"
-                  type="text"
-                  size="50"
-                  onChange={this.inputFieldValueChanged}
-                  value={this.state.editedCategory.description}
-                />
-                <br />
-                <button type="button" onClick={this.updateCategory}>
-                  SAVE
-                </button>
+                <Link to={`/category/${this.state.editedCategory.id}`}>Back</Link>
               </p>
-            </div>
-          )}
+            </p>
+          </div>
+        )}
       </div>
     );
   };
