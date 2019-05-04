@@ -1,6 +1,8 @@
 import ActionTypes from "./ActionTypes";
 import axios from "axios";
-import { API_ROOT } from "../constants/AppConstants";
+import {
+	API_ROOT
+} from "../constants/AppConstants";
 
 // ACTION CREATORS (Action object creator functions)
 // ~ standard and only way to create each action object
@@ -34,7 +36,9 @@ export function fetchAllmembers() {
 				dispatch(membersAll_X());
 			})
 			.then(() => {
-				return { type: null }; // 'Empty' action object
+				return {
+					type: null
+				}; // 'Empty' action object
 			});
 	};
 }
@@ -72,7 +76,9 @@ export function addMember(member) {
 				dispatch(memberAdd_X());
 			})
 			.then(() => {
-				return { type: null }; // 'Empty' action object
+				return {
+					type: null
+				}; // 'Empty' action object
 			});
 	};
 }
@@ -110,7 +116,47 @@ export function getMember(id) {
 				dispatch(memberGetById_X());
 			})
 			.then(() => {
-				return { type: null }; // 'Empty' action object
+				return {
+					type: null
+				}; // 'Empty' action object
+			});
+	};
+}
+
+export const memberDelete_REQ = id => ({
+	type: ActionTypes.MEMBER_DELETE_REQ,
+	id: id
+});
+export const memberDelete_OK = () => ({
+	type: ActionTypes.MEMBER_DELETE_OK
+});
+export const memberDelete_X = () => ({
+	type: ActionTypes.MEMBER_DELETE_X
+});
+
+export function deleteMember(id) {
+	return async (dispatch, getState) => {
+		dispatch(memberDelete_REQ(id));
+		console.dir("Delete by this id: " + id);
+
+		const ajaxRequest = {
+			method: "delete",
+			url: API_ROOT + "/member/" + id
+		};
+
+		axios(ajaxRequest)
+			.then(response => {
+				dispatch(memberDelete_OK());
+				dispatch(fetchAllmembers());
+			})
+			.catch(error => {
+				console.error("Error: " + error);
+				dispatch(memberDelete_X());
+			})
+			.then(() => {
+				return {
+					type: null
+				};
 			});
 	};
 }
