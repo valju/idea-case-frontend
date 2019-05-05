@@ -20,8 +20,7 @@ export function fetchAllCommentsByIdeaId(ideaId) {
   return async (dispatch, getState) => {
 
     dispatch(commentsByIdeaId_REQ());
-
-    const ideaId = 1002;
+    
     const ajaxRequest = {
       method: 'get',
       url: API_ROOT + '/comment/idea/' + ideaId,
@@ -66,7 +65,7 @@ export function addComment(comment) {
     axios(ajaxRequest)
       .then(() => {
         dispatch(commentAdd_OK());
-        dispatch(fetchAllCommentsByIdeaId(comment.ideaId));
+        // dispatch(fetchAllCommentsByIdeaId(comment.ideaId)); // might revert, pending on business case
       })
       .catch((error) => {
         console.error("Error: " + error);
@@ -185,5 +184,3 @@ export function deleteComment(commentObject) {
       });
   }
 };
-
-

@@ -9,6 +9,7 @@ export default class CommentsTechnicalView extends Component {
       <div>
         <h2>Comments Technical View</h2>
         <CommentAdd />
+        <hr />
         <CommentList />
       </div>
     );

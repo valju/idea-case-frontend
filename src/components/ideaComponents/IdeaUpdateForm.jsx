@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-// import { withRouter, BrowserRouter } from "react-router-dom";
+import { withRouter, BrowserRouter } from "react-router-dom";
 
-export default class IdeaUpdateForm extends Component {
+class IdeaUpdateForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -54,6 +54,8 @@ export default class IdeaUpdateForm extends Component {
 
         const ideaObject = this.state.ideaObject;
         this.props.updateIdeaButtonClicked(ideaObject);
+        this.props.history.push('/ideas')
+
     }
 
     render = () => {
@@ -83,7 +85,6 @@ export default class IdeaUpdateForm extends Component {
                     margin="normal"
                 />
                 <br />
-                {/*Not working yet, cannot uncheck the value */}
                 Ready For Comment: <input
                     id="readyForComments"
                     type="checkbox"
@@ -100,21 +101,12 @@ export default class IdeaUpdateForm extends Component {
                     onChange={this.inputFieldValueChanged}
                     margin="normal"
                 />
-                {/* <br />
-                Category ID: <input
-                    id="categoryId"
-                    type="number"
-                    value={this.state.ideaObject.categoryId}
-                    onChange={this.inputFieldValueChanged}
-                    margin="normal"
-                /> */}
                 <br />
-                {/*Working but the field always show the first option, not the current value*/}
                 Category:
                 <select id="categoryId" onChange={this.inputFieldValueChanged}>
                     {
                         this.props.categories.map((item) =>
-                            <option key={item.id} value={item.id}>{item.name}</option>
+                            <option key={item.id} value={item.id} selected={item.id == this.state.ideaObject.categoryId ? true : false}>{item.name} </option>
                         )
 
                     }
@@ -129,4 +121,4 @@ export default class IdeaUpdateForm extends Component {
         );
     };
 }
-// export default withRouter(IdeaUpdateForm)
+export default withRouter(IdeaUpdateForm)
