@@ -3,6 +3,7 @@ import { fetchAllCommentsByIdeaId, deleteComment } from '../../actions/comment';
 import { Link } from "react-router-dom";
 import { fetchAllIdeas } from '../../actions/idea';
 import { connect } from 'react-redux';
+import CommentItem from './CommentItem';
 
 class CommentList extends Component {
 
@@ -43,19 +44,19 @@ class CommentList extends Component {
           : <div>
               {this.props.comments.commentListByIdeaId.length === 0
                 ? <p>There are no comments for this idea!</p>
-                : <ol>
+                : <div>
                   {
                     this.props.comments.commentListByIdeaId.map((item) =>
-                      <li key={`${item.id}`}>
-                        {item.firstName} {item.lastName} says: {item.commentText}
+                      <div key={`${item.id}`}>
+                        <CommentItem key={item.id} item={item} />
                         &nbsp;
                       <Link to={`/comment_edit/${item.id}`}>Edit</Link>
                         &nbsp;
                       <button type="button" onClick={() => this.props.deleteCommentLocal(item)}>Delete</button>
-                      </li>
+                      </div>
                     )
                   }
-                </ol>
+                </div>
               }
             </div>
         }
