@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addMember } from '../../actions/member';
 
-
 class MemberAdd extends Component {
 
   constructor(props) {
@@ -23,12 +22,11 @@ class MemberAdd extends Component {
 
   addMember = () => {
     const member = this.state.newMemberObject;
-    // category.budgetLimit = Number(category.budgetLimit);
     this.props.addMemberLocal(member);
     this.setState(
       {
         newMemberObject:
-        { firstName: "", lastName: "", email: "", },
+          { firstName: "", lastName: "", email: "", },
       }
     );
   };
@@ -38,8 +36,8 @@ class MemberAdd extends Component {
       <div>
         <h4>Add New Member</h4>
         <p>
-          FIrst Name : <input id="firstName" type="text" onChange={this.inputValueChanged} value={this.state.newMemberObject.firstName} /><br />
-          Last Name : <input id="lastName" type="text" onChange={this.inputValueChanged} value={this.state.newMemberObject.lastName}  /><br />
+          First Name : <input id="firstName" type="text" onChange={this.inputValueChanged} value={this.state.newMemberObject.firstName} /><br />
+          Last Name : <input id="lastName" type="text" onChange={this.inputValueChanged} value={this.state.newMemberObject.lastName} /><br />
           Email : <input id="email" type="email" onChange={this.inputValueChanged} value={this.state.newMemberObject.email} /><br />
           <button type="button" onClick={this.addMember}>ADD MEMBER</button>
         </p>
