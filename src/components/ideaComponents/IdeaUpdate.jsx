@@ -16,7 +16,7 @@ class IdeaUpdate extends Component {
         idea.budget = Number(idea.budget);
         idea.peopleNeeded = Number(idea.peopleNeeded);
         idea.categoryId = Number(idea.categoryId);
-
+        // idea.readyForComments = ideaObject.readyForComments === true ? 1 : 0;
         this.props.updateIdeaLocal(idea);
         // this.props.addIdeaLocal(this.state.newIdeaObject);   // Other way
     };
