@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, BrowserRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class IdeaUpdateForm extends Component {
     constructor(props) {
@@ -44,7 +44,7 @@ class IdeaUpdateForm extends Component {
         this.setState({
             ideaObject: {
                 ...this.state.ideaObject,
-                readyForComments: !this.state.readyForComments,
+                readyForComments: !this.state.ideaObject.readyForComments,
             }
         });
     }
@@ -106,7 +106,7 @@ class IdeaUpdateForm extends Component {
                 <select id="categoryId" onChange={this.inputFieldValueChanged}>
                     {
                         this.props.categories.map((item) =>
-                            <option key={item.id} value={item.id} selected={item.id == this.state.ideaObject.categoryId ? true : false}>{item.name} </option>
+                            <option key={item.id} value={item.id} selected={item.id === this.state.ideaObject.categoryId ? true : false}>{item.name} </option>
                         )
 
                     }

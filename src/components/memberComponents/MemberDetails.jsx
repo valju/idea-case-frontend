@@ -13,12 +13,18 @@ class MemberDetails extends Component {
 		return (
 			<div>
 				{this.props.members.memberCurrent === null ? (
-					<p>Waiting server response. Activity indicator could go here.</p>
+					<p>Waiting server response for member list...</p>
 				) : (
+          <div>
 					<MemberItem item={this.props.members.memberCurrent[0]} />
+          <Link to={`/member/update/${this.props.members.memberCurrent[0].id}`}>
+          
+          <button>Update</button>
+          </Link>
+          </div>
 				)}
 				<p>
-					<Link to="/members">Back</Link>
+					<Link to="/members"><button>Back to Member List</button></Link>
 				</p>
 			</div>
 		);
@@ -35,7 +41,4 @@ const mapStateToProps = state => ({
 	members: state.members
 });
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(MemberDetails);
+export default connect(mapStateToProps,mapDispatchToProps)(MemberDetails);
