@@ -76,6 +76,22 @@ export default function ideas(state = initialState, action) {
                 ...state,
                 isLoading: false,
             };
+        case ActionTypes.IDEAS_BY_CATEGORY_REQ:
+            return {
+                ...state,
+                isLoading: true,
+            };
+        case ActionTypes.IDEAS_BY_CATEGORY_OK:
+            return {
+                ...state,
+                ideaList: action.ideaList,
+                isLoading: false,
+            };
+        case ActionTypes.IDEAS_BY_CATEGORY_X:
+            return {
+                ...state,
+                isLoading: false,
+            };    
             /*
             case ActionTypes.CATEGORY_RANDOMIZED_REQ:
                 return {

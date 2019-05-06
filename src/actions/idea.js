@@ -218,6 +218,49 @@ export function updateIdea(idea) {
     }
 };
 
+//Idea by category
+export const ideasByCategory_REQ = () => ({
+    type: ActionTypes.IDEAS_BY_CATEGORY_REQ,
+});
+export const ideasByCategory_OK = (ideaList) => ({
+    type: ActionTypes.IDEAS_BY_CATEGORY_OK,
+    ideaList: ideaList
+});
+export const ideasByCategory_X = () => ({
+    type: ActionTypes.IDEAS_BY_CATEGORY_X,
+});
+
+// Helper function, real action function?
+export function fetchIdeasByCategory(categoryId) {
+    return async (dispatch, getState) => {
+        dispatch(ideasByCategory_REQ());
+
+        //const ideaList = //fetchTestIdeas();  // from mock "Back-end"
+        const ajaxRequest = {
+            method: 'get',
+            url: API_ROOT + '/idea/byCategory/' + categoryId
+        };
+
+        axios(ajaxRequest)
+            .then((response) => {
+                dispatch(ideasByCategory_OK(response.data));
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error("Error: " + error);
+                dispatch(ideasByCategory_X());
+            })
+            .then(() => {
+                return {
+                    type: null
+                }; // 'Empty' action object
+            });
+
+    }
+};
+
+
+
 // Same with other actions...
 // Action object creator functions
 /*
