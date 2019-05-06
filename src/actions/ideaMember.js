@@ -1,6 +1,7 @@
 import ActionTypes from './ActionTypes';
 import axios from 'axios';
 import { API_ROOT } from '../constants/AppConstants';
+// import { Action } from 'rxjs/internal/scheduler/Action';
 
 // ACTION CREATORS (Action object creator functions)
 
@@ -76,5 +77,44 @@ export function getIdeaMemberById(ideaId, memberId) {
     .then(() => {
       return { type: null } // 'Empty' action object
     })
+  }
+}
+
+// Add new idea-member
+export const ideaMemberAdd_REQ = () => ({
+  type: ActionTypes.IDEA_MEMBER_ADD_REQ,
+});
+
+export const ideaMemberAdd_OK = () => ({
+  type: ActionTypes.IDEA_MEMBER_ADD_OK,
+});
+
+export const ideaMemberAdd_X = () => ({
+  type: ActionTypes.IDEA_MEMBER_ADD_X,
+})
+
+export function addIdeaMember(ideaMember) {
+  return async (dispatch, getState) => {
+    dispatch(ideaMemberAdd_REQ())
+
+    const ajaxRequest = {
+      method: 'post',
+      url: API_ROOT + '/ideaMember/',
+      data: ideaMember
+    };
+
+    axios(ajaxRequest)
+    .then(response => {
+      dispatch(ideaMemberAdd_OK(response.data))
+      dispatch(fetchAllIdeaMember())
+    })
+    .catch(error => {
+      console.log("Error: " + error)
+      dispatch(ideaMemberAdd_X())
+    })
+    .then(() => {
+      return { type: null }
+    })
+
   }
 }

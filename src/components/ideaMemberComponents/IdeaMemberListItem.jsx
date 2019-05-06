@@ -6,7 +6,9 @@ class IdeaMemberListItem extends Component {
     return (
       <li style={{listStyle: 'none'}}>
 				<Link to={"/idea_member/" + this.props.item.ideaId + "/" + this.props.item.memberId}>
-          <IdeaMemberItem item={this.props.item} />
+          <div>
+            <IdeaMemberItem item={this.props.item} />
+          </div>
 				</Link>
 			</li>
     );

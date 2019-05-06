@@ -6,7 +6,9 @@ class IdeaMemberItem extends Component {
     const { firstName, lastName, name } = this.props.item
     return (
       <div>
-        {name} is the idea of {firstName} {lastName}
+        {name} is the idea of {firstName} {lastName} 
+        <button>Edit</button>
+        <button>Delete</button>
       </div>
     );
   }
