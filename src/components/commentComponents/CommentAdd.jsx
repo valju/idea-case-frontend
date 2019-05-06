@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addComment } from '../../actions/comment';
-import { fetchAllmembers } from '../../actions/member';
+import { fetchAllMembers } from '../../actions/member';
 import { fetchAllIdeas } from '../../actions/idea';
 
 class CommentAdd extends Component {
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(addComment(comment));
   },
   fetchAllMembersLocal: () => {
-    dispatch(fetchAllmembers());
+    dispatch(fetchAllMembers());
   },
   fetchAllIdeasLocal: () => {
     dispatch(fetchAllIdeas());
