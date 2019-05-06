@@ -106,7 +106,7 @@ class IdeaUpdateForm extends Component {
                 <select id="categoryId" onChange={this.inputFieldValueChanged}>
                     {
                         this.props.categories.map((item) =>
-                            <option key={item.id} value={item.id} selected={item.id == this.state.ideaObject.categoryId ? true : false}>{item.name} </option>
+                            <option key={item.id} value={item.id} selected={item.id === this.state.ideaObject.categoryId ? true : false}>{item.name} </option>
                         )
 
                     }
