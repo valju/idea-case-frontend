@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { fetchAllCommentsByIdeaId, deleteComment } from '../../actions/comment';
-import { Link } from "react-router-dom";
 import { fetchAllIdeas } from '../../actions/idea';
 import { connect } from 'react-redux';
 import CommentItem from './CommentItem';
@@ -27,7 +26,6 @@ class CommentList extends Component {
   }
 
   render() {
-    console.log(this.props.comments.commentListByIdeaId)
     return (
       <div>
         <h4>Select Comments for one Idea</h4>
@@ -42,23 +40,19 @@ class CommentList extends Component {
         {this.state.defaultIdeaSelected
           ? <p>Please select an idea.</p>
           : <div>
-              {this.props.comments.commentListByIdeaId.length === 0
-                ? <p>There are no comments for this idea!</p>
-                : <div>
-                  {
-                    this.props.comments.commentListByIdeaId.map((item) =>
-                      <div key={`${item.id}`}>
-                        <CommentItem key={item.id} item={item} />
-                        &nbsp;
-                      <Link to={`/comment_edit/${item.id}`}>Edit</Link>
-                        &nbsp;
-                      <button type="button" onClick={() => this.props.deleteCommentLocal(item)}>Delete</button>
-                      </div>
-                    )
-                  }
-                </div>
-              }
-            </div>
+            {this.props.comments.commentListByIdeaId.length === 0
+              ? <p>There are no comments for this idea!</p>
+              : <div>
+                {
+                  this.props.comments.commentListByIdeaId.map((item) =>
+                    <div key={`${item.id}`}>
+                      <CommentItem key={item.id} item={item} deleteComment={this.props.deleteCommentLocal} />
+                    </div>
+                  )
+                }
+              </div>
+            }
+          </div>
         }
       </div>
     );
