@@ -66,6 +66,7 @@ class IdeaMemberAdd extends Component {
           onClick={this.addIdeaMember}>
             ADD NEW IDEA-MEMBER
         </button>
+        <h4>{this.props.message}</h4>
       </div>
     );
   }
@@ -86,6 +87,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   memberList: state.members.memberList,
   ideaList: state.ideas.ideaList,
+  message: state.ideaMembers.ideaMemberMessage
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IdeaMemberAdd);

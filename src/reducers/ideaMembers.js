@@ -3,7 +3,8 @@ import ActionTypes from '../actions/ActionTypes';
 export const initialState = {
   isLoading: false,
   ideaMemberList: [],
-  ideaMemberCurrent: {},  
+  ideaMemberCurrent: {},
+  ideaMemberMessage: ''
 }
 
 export default function ideaMembers(state = initialState, action) {
@@ -12,6 +13,7 @@ export default function ideaMembers(state = initialState, action) {
       return {
         ...state,
         isLoading: true,
+        ideaMemberMessage: ''   
       };
 
     case ActionTypes.IDEA_MEMBER_ALL_OK:
@@ -30,6 +32,7 @@ export default function ideaMembers(state = initialState, action) {
     case ActionTypes.IDEA_MEMBER_GETBYID_REQ:
       return {
         ...state,
+        ideaMemberMessage: '',   
         isLoading: true,
       };
 
@@ -50,6 +53,7 @@ export default function ideaMembers(state = initialState, action) {
       return {
         ...state,
         isLoading: true,
+        ideaMemberMessage: ''        
       };
 
     case ActionTypes.IDEA_MEMBER_ADD_OK:
@@ -68,6 +72,7 @@ export default function ideaMembers(state = initialState, action) {
       return {
         ...state,
         isLoading: true,
+        ideaMemberMessage: ''        
       };
       
     case ActionTypes.IDEA_MEMBER_DEL_OK:
@@ -81,6 +86,52 @@ export default function ideaMembers(state = initialState, action) {
         ...state,
         isLoading: false,
       };
+
+    case ActionTypes.IDEA_MEMBER_UPDATE_IDEA_REQ:
+        return {
+        ...state,
+        ideaMemberMessage: '',    
+        isLoading: true,
+      };
+    
+    case ActionTypes.IDEA_MEMBER_UPDATE_IDEA_OK:
+      return {
+        ...state,
+        isLoading: false,
+      };
+
+    case ActionTypes.IDEA_MEMBER_UPDATE_IDEA_X:
+      return {
+        ...state,
+        isLoading: false,
+      };
+
+    case ActionTypes.IDEA_MEMBER_UPDATE_MEMBER_REQ:
+      return {
+      ...state,
+      ideaMemberMessage: '',    
+      isLoading: true,
+    };
+  
+    case ActionTypes.IDEA_MEMBER_UPDATE_MEMBER_OK:
+      return {
+        ...state,
+        isLoading: false,
+      };
+
+    case ActionTypes.IDEA_MEMBER_UPDATE_MEMBER_X:
+      return {
+        ...state,
+        isLoading: false,
+      };
+
+    case ActionTypes.IDEA_MEMBER_MESSAGE:
+      return {
+        ...state,
+        isLoading: false,
+        ideaMemberMessage: action.message
+      };  
+
     default:
       return state;
 

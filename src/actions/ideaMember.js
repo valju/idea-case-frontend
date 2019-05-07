@@ -93,6 +93,11 @@ export const ideaMemberAdd_X = () => ({
   type: ActionTypes.IDEA_MEMBER_ADD_X,
 })
 
+export const ideaMemberAdd_Message = (message) => ({
+  type: ActionTypes.IDEA_MEMBER_MESSAGE,
+  message
+})
+
 export function addIdeaMember(ideaMember) {
   return async (dispatch, getState) => {
     dispatch(ideaMemberAdd_REQ())
@@ -111,6 +116,7 @@ export function addIdeaMember(ideaMember) {
     .catch(error => {
       console.log("Error: " + error)
       dispatch(ideaMemberAdd_X())
+      dispatch(ideaMemberAdd_Message(error.message))
     })
     .then(() => {
       return { type: null }
@@ -159,3 +165,102 @@ export function deleteIdeaMember(ideaId, memberId) {
 }
 
 // Update idea-member
+export const ideaMemberUpdate_Message = (message) => ({
+  type: ActionTypes.IDEA_MEMBER_MESSAGE,
+  message
+})
+
+// Update IDEA of idea-member
+export const ideaMemberUpdate_Idea_REQ = () => ({
+  type: ActionTypes.IDEA_MEMBER_UPDATE_IDEA_REQ,
+})
+
+export const ideaMemberUpdate_Idea_OK = () => ({
+  type: ActionTypes.IDEA_MEMBER_UPDATE_IDEA_OK,
+})
+
+export const ideaMemberUpdate_Idea_X = () => ({
+  type: ActionTypes.IDEA_MEMBER_UPDATE_IDEA_X,
+})
+
+export function updateIdeaOfIdeaMember(oldIdeaId, newIdeaId, memberId) {
+  return async (dispatch, getState) => {
+    dispatch(ideaMemberUpdate_Idea_REQ())
+    const data = {
+      oldIdeaId,
+      newIdeaId,
+      oldMemberId: memberId,
+      newMemberId: null
+    }
+
+    const ajaxRequest = {
+      method: 'put',
+      url: API_ROOT + '/ideaMember/',
+      data
+    };
+
+    axios(ajaxRequest)
+    .then((response) => {
+      const success_message = "Updated succesfully!"
+      dispatch(ideaMemberUpdate_Idea_OK())
+      dispatch(fetchAllIdeaMember())
+      dispatch(ideaMemberUpdate_Message(success_message))      
+    })
+    .catch((error) => {
+      console.log("Error: " + error)
+      dispatch(ideaMemberUpdate_Idea_X())
+      dispatch(ideaMemberUpdate_Message(error.message))
+    })
+    .then(() => {
+      return { type: null }
+    })
+  }
+}
+
+// Update MEMBER of idea-member
+
+export const ideaMemberUpdate_Member_REQ = () => ({
+  type: ActionTypes.IDEA_MEMBER_UPDATE_MEMBER_REQ,
+})
+
+export const ideaMemberUpdate_Member_OK = () => ({
+  type: ActionTypes.IDEA_MEMBER_UPDATE_MEMBER_OK,
+})
+
+export const ideaMemberUpdate_Member_X = () => ({
+  type: ActionTypes.IDEA_MEMBER_UPDATE_MEMBER_X,
+})
+
+export function updateMemberOfIdeaMember(ideaId, oldMemberId, newMemberId) {
+  return async (dispatch, setState) => {
+    dispatch(ideaMemberUpdate_Member_REQ())
+    const data = {
+      oldIdeaId: ideaId,
+      newIdeaId: null,
+      oldMemberId,
+      newMemberId
+    }
+
+    const ajaxRequest = {
+      method: 'put',
+      url: API_ROOT + '/ideaMember/',
+      data
+    };
+
+    axios(ajaxRequest)
+    .then((response) => {
+      const success_message = "Updated succesfully!"
+      dispatch(ideaMemberUpdate_Member_OK())
+      dispatch(fetchAllIdeaMember())
+      dispatch(ideaMemberUpdate_Message(success_message))      
+    })
+    .catch((error) => {
+      console.log("Error: " + error)
+      dispatch(ideaMemberUpdate_Member_X())
+      dispatch(ideaMemberUpdate_Message(error.message))
+    })
+    .then(() => {
+      return { type: null }
+    })
+  }
+}

@@ -10,12 +10,12 @@ class IdeaMemberListItem extends Component {
           <IdeaMemberItem item={this.props.item} />
         </div>
         <Link to={"/idea_member/" + ideaId + "/" + memberId}>
-          <button>View</button>
+          <button>VIEW</button>
         </Link>
         <Link to={"/idea_member/update/" + ideaId + "/" + memberId}>        
-          <button>Edit</button>
+          <button>UPDATE</button>
         </Link>
-        <button onClick={() => this.props.delete(ideaId, memberId)}>Delete</button>
+        <button onClick={() => this.props.delete(ideaId, memberId)}>DELETE</button>
         <hr />
 			</li>
     );
