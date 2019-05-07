@@ -118,3 +118,44 @@ export function addIdeaMember(ideaMember) {
 
   }
 }
+
+// Delete idea-member
+
+export const ideaMemberDelete_REQ = () => ({
+  type: ActionTypes.IDEA_MEMBER_DEL_REQ,
+})
+
+export const ideaMemberDelete_OK = () => ({
+  type: ActionTypes.IDEA_MEMBER_DEL_OK,
+})
+
+export const ideaMemberDelete_X = () => ({
+  type: ActionTypes.IDEA_MEMBER_DEL_X,
+})
+
+export function deleteIdeaMember(ideaId, memberId) {
+  return async (dispatch, getState) => {
+    dispatch(ideaMemberDelete_REQ())
+    console.dir("Delete by this (ideaId, memberId): (" + ideaId + ", " + memberId + ")");
+    
+    const ajaxRequest = {
+      method: 'delete',
+      url: API_ROOT + '/ideaMember/' + ideaId + "/" + memberId,
+    };
+
+    axios(ajaxRequest)
+    .then(() => {
+      dispatch(ideaMemberDelete_OK())
+      dispatch(fetchAllIdeaMember())
+    })
+    .catch((error) => {
+      console.log("Error: " + error)
+      dispatch(ideaMemberDelete_X())      
+    })
+    .then(() => {
+      return { type: null }
+    })
+  }
+}
+
+// Update idea-member

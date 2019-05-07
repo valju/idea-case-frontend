@@ -26,6 +26,7 @@ import CommentEditView from '../views/commentViews/CommentEditView';
 import IdeaMembers from '../views/ideaMemberViews/IdeaMembers';
 import IdeaMemberDetailsView from '../views/ideaMemberViews/IdeaMemberDetailsView';
 import MemberUpdateView from '../views/memberViews/MemberUpdateView';
+import IdeaMemberUpdate from '../components/ideaMemberComponents/IdeaMemberUpdate';
 
 
 const styles = theme => ({
@@ -136,7 +137,8 @@ class Navigator extends Component {
               <Route path="/comments_technical" component={CommentsTechnicalView} />
               <Route path="/comment_edit/:id" component={CommentEditView} />
               <Route exact path="/idea_member" component={IdeaMembers} /> 
-              <Route path="/idea_member/:ideaId/:memberId" component={IdeaMemberDetailsView} />                                         
+              <Route exact path="/idea_member/:ideaId/:memberId" component={IdeaMemberDetailsView} /> 
+              <Route exact path="/idea_member/update/:ideaId/:memberId" component={IdeaMemberUpdate} />                                                                                               
               <Route render={ () => <h1>Page not found</h1>} />
             </Switch>
 

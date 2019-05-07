@@ -46,19 +46,41 @@ export default function ideaMembers(state = initialState, action) {
         isLoading: false,
       }
     
-    // case ActionTypes.IDEA_MEMBER_ADD_REQ:
-    //   return {
-    //     ...state,
-    //     isLoading: true,
-    //   };
+    case ActionTypes.IDEA_MEMBER_ADD_REQ:
+      return {
+        ...state,
+        isLoading: true,
+      };
 
-    // case ActionTypes.IDEA_MEMBER_ADD_OK:
-    //  return {
-    //    ...state,
-    //    isLoading: false,
+    case ActionTypes.IDEA_MEMBER_ADD_OK:
+      return {
+      ...state,
+      isLoading: false,
+    }
 
-    //  }
+    case ActionTypes.IDEA_MEMBER_ADD_X:
+      return {
+      ...state,
+      isLoading: false,
+    }
+
+    case ActionTypes.IDEA_MEMBER_DEL_REQ:
+      return {
+        ...state,
+        isLoading: true,
+      };
       
+    case ActionTypes.IDEA_MEMBER_DEL_OK:
+      return {
+        ...state,
+        isLoading: false,
+      };
+
+    case ActionTypes.IDEA_MEMBER_DEL_X:
+      return {
+        ...state,
+        isLoading: false,
+      };
     default:
       return state;
 
