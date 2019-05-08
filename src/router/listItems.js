@@ -8,7 +8,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import CategoryIcon from '@material-ui/icons/Category';
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
 import PersonIcon from '@material-ui/icons/Person';
-import CommentIcon from '@material-ui/icons/Comment';
 import PortraitIcon from '@material-ui/icons/Portrait';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
