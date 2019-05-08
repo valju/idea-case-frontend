@@ -65,7 +65,7 @@ export function addComment(comment) {
     axios(ajaxRequest)
       .then(() => {
         dispatch(commentAdd_OK());
-        // dispatch(fetchAllCommentsByIdeaId(comment.ideaId)); // might revert, pending on business case
+        dispatch(fetchAllCommentsByIdeaId(comment.ideaId));
       })
       .catch((error) => {
         console.error("Error: " + error);

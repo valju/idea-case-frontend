@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addComment } from '../../actions/comment';
 import { fetchAllMembers } from '../../actions/member';
-import { fetchAllIdeas } from '../../actions/idea';
 
 class CommentAdd extends Component {
 
@@ -16,7 +15,6 @@ class CommentAdd extends Component {
 
   componentDidMount() {
     this.props.fetchAllMembersLocal();
-    this.props.fetchAllIdeasLocal();
   }
 
   inputFieldValueChanged = (event) => {
@@ -37,7 +35,7 @@ class CommentAdd extends Component {
         }
       );
     } else {
-      comment.ideaId = Number(comment.ideaId);
+      comment.ideaId = Number(this.props.ideaId);
       comment.memberId = Number(comment.memberId);
       this.props.addCommentLocal(comment);
       this.setState(
@@ -52,18 +50,11 @@ class CommentAdd extends Component {
   render() {
     return (
       <div>
-        <h4>Add new Comment</h4>
-        <select id="memberId" onChange={this.inputFieldValueChanged}>
+        <h3>Add new Comment</h3>
+        Select a member: <select id="memberId" onChange={this.inputFieldValueChanged}>
           {
             this.props.members.memberList.map((item) =>
               <option key={item.id} value={item.id}>{item.firstName} {item.lastName}</option>
-            )
-          }
-        </select>
-        <select id="ideaId" onChange={this.inputFieldValueChanged}>
-        {
-            this.props.ideas.ideaList.map((item) =>
-              <option key={item.id} value={item.id}>{item.name}</option>
             )
           }
         </select>
@@ -83,14 +74,10 @@ const mapDispatchToProps = dispatch => ({
   fetchAllMembersLocal: () => {
     dispatch(fetchAllMembers());
   },
-  fetchAllIdeasLocal: () => {
-    dispatch(fetchAllIdeas());
-  },
 });
 
 const mapStateToProps = state => ({
   members: state.members,
-  ideas: state.ideas,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentAdd);

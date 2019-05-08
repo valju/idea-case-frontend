@@ -42,12 +42,6 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Member" />
     </ListItemLink>
-    <ListItemLink href="/comments_technical">
-      <ListItemIcon>
-      <CommentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Comment" />
-    </ListItemLink>
     <ListItemLink href="/idea_member">
       <ListItemIcon>
       <PortraitIcon />
