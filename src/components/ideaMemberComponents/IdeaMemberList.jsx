@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchAllIdeaMember } from '../../actions/ideaMember';
+import { fetchAllIdeaMember, deleteIdeaMember } from '../../actions/ideaMember';
 import IdeaMemberListItem from './IdeaMemberListItem';
 
 class IdeaMemberList extends Component {
@@ -22,6 +22,7 @@ class IdeaMemberList extends Component {
               <IdeaMemberListItem 
                 key={`${item.ideaId}-${item.memberId}`}
                 item={item}
+                delete={this.props.deleteIdeaMemberLocal}
               />
             )
           }
@@ -35,6 +36,9 @@ const mapDispatchToProps = (dispatch) => ({
   ideaMemberFetchAll: () => {
     dispatch(fetchAllIdeaMember())
   },
+  deleteIdeaMemberLocal: (ideaId, memberId) => { 
+    dispatch(deleteIdeaMember(ideaId, memberId))
+  }
 })
 
 const mapStateToProps = (state) => ({
