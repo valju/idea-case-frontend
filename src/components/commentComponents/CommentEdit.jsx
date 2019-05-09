@@ -65,7 +65,7 @@ class CommentEdit extends Component {
                 Comment edited!
               </p>
               <p>
-                <Link to="/comments_technical"><span>Back</span></Link>
+                <Link to={"/Idea/" + this.props.comments.commentCurrent.ideaId}><span>Back</span></Link>
               </p>
             </div>
           } 
