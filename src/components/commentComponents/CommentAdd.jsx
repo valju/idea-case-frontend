@@ -10,7 +10,7 @@ class CommentAdd extends Component {
     super(props);
     this.state = {
       newComment:
-        { ideaId: "1002", memberId: "101", commentText: "", },
+        { ideaId: "", memberId: "101", commentText: "", },
     };
   }
 
@@ -67,27 +67,28 @@ class CommentAdd extends Component {
               Comment Text: <input id="commentText" type="text" size="50" onChange={this.inputFieldValueChanged} value={this.state.newComment.commentText} /><br />
               <button type="button" onClick={this.addComment}>ADD NEW COMMENT</button>
             </p>
-          </div>}
           </div>
-      );
-    };
-  }
-  
+        }
+      </div>
+    );
+  };
+}
+
 const mapDispatchToProps = dispatch => ({
-          addCommentLocal: (comment) => {
-          dispatch(addComment(comment));
-        },
+  addCommentLocal: (comment) => {
+    dispatch(addComment(comment));
+  },
   fetchAllMembersLocal: () => {
-          dispatch(fetchAllMembers());
-        },
+    dispatch(fetchAllMembers());
+  },
   getIdeaLocal: (ideaId) => {
-          dispatch(getIdea(ideaId));
-        },
-      });
-      
+    dispatch(getIdea(ideaId));
+  },
+});
+
 const mapStateToProps = state => ({
-          members: state.members,
-        ideas: state.ideas,
-      });
-      
-      export default connect(mapStateToProps, mapDispatchToProps)(CommentAdd);
+  members: state.members,
+  ideas: state.ideas,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentAdd);
