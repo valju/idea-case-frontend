@@ -18,11 +18,14 @@ class MemberDetails extends Component {
           <div>
 					<MemberItem item={this.props.members.memberCurrent[0]} />
           <Link to={`/member/update/${this.props.members.memberCurrent[0].id}`}>
-          
           <button>Update</button>
           </Link>
+          <Link to={`/member/idea/comment/${this.props.members.memberCurrent[0].id}`}>
+          <button>Member comment</button>
+          </Link>
           </div>
-				)}
+        )}
+        
 				<p>
 					<Link to="/members"><button>Back to Member List</button></Link>
 				</p>
