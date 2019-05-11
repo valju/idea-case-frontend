@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default class CommentItem extends Component {
 
   formatTimeStamp = (timeStamp) => {
-    let time = Moment(timeStamp).format("DD/MM/YYYY HH:mm")
+    let time = Moment(timeStamp).format("HH:mm")
     return time;
   }
 
