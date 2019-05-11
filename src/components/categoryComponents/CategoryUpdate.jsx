@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateCategory } from "../../actions/category";
 import CategoryItem from "./CategoryItem";
+
 // import { getCategory } from "../../actions/category";
 import { Link } from "react-router-dom";
+import IdeaItem from "../ideaComponents/IdeaItem";
 
 class CategoryUpdate extends Component {
     constructor(props) {
@@ -12,7 +14,7 @@ class CategoryUpdate extends Component {
             editedCategory: null
         };
     }
-
+    
     componentDidMount() {
         //    this.props.categoryGetById(this.props.id);
         if (this.props.categories.categoryCurrent != null) {
@@ -20,6 +22,7 @@ class CategoryUpdate extends Component {
                 editedCategory: this.props.categories.categoryCurrent
             });
         }
+      
     }
 
     inputFieldValueChanged = event => {
@@ -113,11 +116,11 @@ class CategoryUpdate extends Component {
 const mapDispatchToProps = dispatch => ({
     updateCategoryLocal: category => {
         dispatch(updateCategory(category));
-    }
-});
+    },
+   });
 const mapStateToProps = state => ({
-    categories: state.categories
-});
+    categories: state.categories,
+    });
 
 export default connect(
     mapStateToProps,
