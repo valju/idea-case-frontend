@@ -29,6 +29,7 @@ import IdeaMemberUpdateView from '../views/ideaMemberViews/IdeaMemberUpdateView'
 import IdeaUpdateOnly from '../components/ideaMemberComponents/IdeaUpdateOnly';
 import MemberUpdateOnly from '../components/ideaMemberComponents/MemberUpdateOnly';
 import HomeView from '../views/HomeView';
+import MemberIdeaCommentView from '../views/memberViews/MemberIdeaCommentView';
 
 const styles = theme => ({
   root: {
@@ -131,6 +132,7 @@ class Navigator extends Component {
               <Route path="/members" component={Members} />
               <Route exact path="/member/:id" component={MemberDetailsView} />
               <Route exact path="/member/update/:id" component={MemberUpdateView} />
+              <Route exact path="/member/idea/comment/:id" component={MemberIdeaCommentView} />
               <Route exact path="/category/:id" component={CategoryDetailsView} />
 						  <Route exact path="/category/update/:id" component={CategoryUpdateView} />
               <Route path="/ideas" component={Ideas} />

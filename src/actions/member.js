@@ -196,3 +196,50 @@ export function updateMember(member) {
       });
   };
 }
+
+//GETTING ALL IDEA COMMENTS FOR MEMBER BY ID
+export const memberIdForIdeaComment_REQ = () => ({
+  type: ActionTypes.MEMBERID_FOR_IDEACOMMENT_REQ,
+});
+export const memberIdForIdeaComment_OK = memberIdeaCommentList => ({
+  type: ActionTypes.MEMBERID_FOR_IDEACOMMENT_OK,
+  memberIdeaCommentList: memberIdeaCommentList,
+});
+
+export const memberIdForIdeaComment_X = () => ({
+  type: ActionTypes.MEMBERID_FOR_IDEACOMMENT_X,
+});
+
+export function getMemberIdeaCommentByMemberId(id) {
+  return async (dispatch, getState) => {
+    dispatch(memberIdForIdeaComment_REQ());
+    console.dir("Get member with this id: " + id);
+
+    const ajaxRequest = {
+      method: "get",
+      url: API_ROOT + "/member/idea/comment/" + id
+     
+    };
+
+    axios(ajaxRequest)
+      .then(response => {
+        
+        dispatch(memberIdForIdeaComment_OK(response.data));
+        console.dir(response.data);
+      })
+      .catch(error => {
+        console.error("Error: " + error);
+        dispatch(memberIdForIdeaComment_X());
+      })
+      .then(() => {
+        return {
+          type: null
+        }; 
+      });
+  };
+ 
+}
+
+
+
+
