@@ -5,21 +5,21 @@ import { API_ROOT } from '../constants/AppConstants';
 // ACTION CREATORS (Action object creator functions)
 
 // Comments ALL
-export const commentsAll_REQ = () => ({
-  type: ActionTypes.COMMENTS_ALL_REQ
+export const commentsAllFromToday_REQ = () => ({
+  type: ActionTypes.COMMENTS_ALLFROMTODAY_REQ
 });
-export const commentsAll_OK = (commentsAll) => ({
-  type: ActionTypes.COMMENTS_ALL_OK,
+export const commentsAllFromToday_OK = (commentsAll) => ({
+  type: ActionTypes.COMMENTS_ALLFROMTODAY_OK,
   commentsAll: commentsAll
 });
-export const commentsAll_X = () => ({
-  type: ActionTypes.COMMENTS_ALL_X,
+export const commentsAllFromToday_X = () => ({
+  type: ActionTypes.COMMENTS_ALLFROMTODAY_X,
 });
 
-export function fetchAllComments() {
+export function fetchAllCommentsFromToday() {
   return async (dispatch, getState) => {
 
-    dispatch(commentsAll_REQ());
+    dispatch(commentsAllFromToday_REQ());
     
     const ajaxRequest = {
       method: 'get',
@@ -28,11 +28,11 @@ export function fetchAllComments() {
 
     axios(ajaxRequest)
       .then((response) => {
-        dispatch(commentsAll_OK(response.data));
+        dispatch(commentsAllFromToday_OK(response.data));
       })
       .catch((error) => {
         console.error("Error: " + error);
-        dispatch(commentsAll_X());
+        dispatch(commentsAllFromToday_X());
       })
       .then(() => {
         return { type: null }; // 'Empty' action object

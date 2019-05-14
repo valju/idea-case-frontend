@@ -28,18 +28,18 @@ export default function comments(state = initialState, action) {
         isLoading: false,
       };
 
-    case ActionTypes.COMMENTS_ALL_REQ:
+    case ActionTypes.COMMENTS_ALLFROMTODAY_REQ:
       return {
         ...state,
         isLoading: true,
       };
-    case ActionTypes.COMMENTS_ALL_OK:
+    case ActionTypes.COMMENTS_ALLFROMTODAY_OK:
       return {
         ...state,
         commentsAll: action.commentsAll,
         isLoading: false,
       };
-    case ActionTypes.COMMENTS_ALL_X:
+    case ActionTypes.COMMENTS_ALLFROMTODAY_X:
       return {
         ...state,
         isLoading: false,
