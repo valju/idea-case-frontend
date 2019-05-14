@@ -5,7 +5,9 @@ export const initialState = {
   isLoading: false,
   memberList: [],
   memberIdsFound: null,
-  memberCurrent: null
+  memberCurrent: null,
+  memberIdeaCommentList: [],
+
 };
 
 export default function members(state = initialState, action) {
@@ -58,6 +60,24 @@ export default function members(state = initialState, action) {
         ...state,
         isLoading: false
       };
+
+       //Idea comment by member id 
+       case ActionTypes.MEMBERID_FOR_IDEACOMMENT_REQ:
+       return {
+         ...state,
+         isLoading: true
+       };
+     case ActionTypes.MEMBERID_FOR_IDEACOMMENT_OK:
+       return {
+         ...state,
+         memberIdeaCommentList: action.memberIdeaCommentList,
+           isLoading: false
+       };
+     case ActionTypes.MEMBERID_FOR_IDEACOMMENT_X:
+       return {
+         ...state,
+         isLoading: false
+       };
 
     case null:
       return state;
