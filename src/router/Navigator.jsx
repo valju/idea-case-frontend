@@ -28,6 +28,7 @@ import MemberUpdateView from '../views/memberViews/MemberUpdateView';
 import IdeaMemberUpdateView from '../views/ideaMemberViews/IdeaMemberUpdateView';
 import IdeaUpdateOnly from '../components/ideaMemberComponents/IdeaUpdateOnly';
 import MemberUpdateOnly from '../components/ideaMemberComponents/MemberUpdateOnly';
+import HomeView from '../views/HomeView';
 import MemberIdeaCommentView from '../views/memberViews/MemberIdeaCommentView';
 
 const styles = theme => ({
@@ -125,7 +126,8 @@ class Navigator extends Component {
             </div>
 
             <Switch>
-              <Route exact path="/" component={Categories} />
+              <Route exact path="/" component={HomeView} />
+              <Route exact path="/home" component={HomeView} />
               <Route path="/categories" component={Categories} />
               <Route path="/members" component={Members} />
               <Route exact path="/member/:id" component={MemberDetailsView} />

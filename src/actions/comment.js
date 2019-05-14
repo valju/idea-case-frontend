@@ -4,6 +4,42 @@ import { API_ROOT } from '../constants/AppConstants';
 
 // ACTION CREATORS (Action object creator functions)
 
+// Comments ALL
+export const commentsAll_REQ = () => ({
+  type: ActionTypes.COMMENTS_ALL_REQ
+});
+export const commentsAll_OK = (commentsAll) => ({
+  type: ActionTypes.COMMENTS_ALL_OK,
+  commentsAll: commentsAll
+});
+export const commentsAll_X = () => ({
+  type: ActionTypes.COMMENTS_ALL_X,
+});
+
+export function fetchAllComments() {
+  return async (dispatch, getState) => {
+
+    dispatch(commentsAll_REQ());
+    
+    const ajaxRequest = {
+      method: 'get',
+      url: API_ROOT + '/comment/all',
+    };
+
+    axios(ajaxRequest)
+      .then((response) => {
+        dispatch(commentsAll_OK(response.data));
+      })
+      .catch((error) => {
+        console.error("Error: " + error);
+        dispatch(commentsAll_X());
+      })
+      .then(() => {
+        return { type: null }; // 'Empty' action object
+      });
+  }
+};
+
 // Comments SHOW ALL BY IDEAID
 export const commentsByIdeaId_REQ = () => ({
   type: ActionTypes.COMMENTS_BYIDEAID_REQ

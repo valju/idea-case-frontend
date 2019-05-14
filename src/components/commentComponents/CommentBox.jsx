@@ -12,8 +12,8 @@ class CommentBox extends Component {
   }
 
   formatTimeStamp = (timeStamp) => {
-    let time = Moment(timeStamp).format("DD/MM/YYYY")
-    return time;
+    let formattedTime = Moment(timeStamp).format("DD/MM/YYYY")
+    return formattedTime;
   }
 
   render() {
