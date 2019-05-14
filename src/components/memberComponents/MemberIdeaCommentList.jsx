@@ -5,39 +5,40 @@ import MemberIdeaCommentListItem from './MemberIdeaCommentListItem';
 
 class MemberIdeaCommentList extends Component {
 
-  componentDidMount() {  
+  componentDidMount() {
     this.props.memberIdeaCommentById(this.props.id);
-    console.log("commentlist-id"+this.props.id);
+    console.log("commentlist-id" + this.props.id);
   }
 
 
   render() {
-    console.dir(this.props.members.memberIdeaCommentList);
     return (
       <div>
-        <h4> Members Comments </h4>
-        <ol>
-          {this.props.members.memberIdeaCommentList.map(item => (
+        {(this.props.members.memberIdeaCommentList.length === 0)
+          ?
+          (<div>No Ideas or Comments for this person!!!</div>)
+          : (this.props.members.memberIdeaCommentList.map((item, id) =>
             <MemberIdeaCommentListItem
-              key={item.id}
+              key={id}
               item={item}
             />
-          ))}
-        </ol>
-        
+          )
+          )}
+
       </div>
+
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-	memberIdeaCommentById: (id) => {
+  memberIdeaCommentById: (id) => {
     dispatch(getMemberIdeaCommentByMemberId(id))
-	}
+  }
 });
 
 const mapStateToProps = state => ({
-	members: state.members
+  members: state.members
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MemberIdeaCommentList);

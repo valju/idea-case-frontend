@@ -7,8 +7,8 @@ class MemberIdeaCommentView extends Component {
     return (
       <div>
         <h2> Member Idea + Comment</h2>
-				<MemberDetails id={this.props.match.params.id} /> 
-        <MemberIdeaCommentList id={this.props.match.params.id}/>
+        <MemberDetails id={this.props.match.params.id} />
+        <MemberIdeaCommentList id={this.props.match.params.id} />
       </div>
     );
   }
