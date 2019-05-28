@@ -4,14 +4,14 @@ import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { deleteUser } from "../../actions/user";
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing.unit
   },
   input: {
     display: "none"
   }
-}));
+});
 
 class Settings extends Component {
   onDeleteClick(id) {
@@ -52,4 +52,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { deleteUser }
-)(withStyles(useStyles)(Settings));
+)(withStyles(styles)(Settings));

@@ -1,15 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
 
-import HomeIcon from '@material-ui/icons/Home';
-import CategoryIcon from '@material-ui/icons/Category';
-import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
-import PersonIcon from '@material-ui/icons/Person';
-import PortraitIcon from '@material-ui/icons/Portrait';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HomeIcon from "@material-ui/icons/Home";
+import CategoryIcon from "@material-ui/icons/Category";
+import WbIncandescentIcon from "@material-ui/icons/WbIncandescent";
+import PersonIcon from "@material-ui/icons/Person";
+import PortraitIcon from "@material-ui/icons/Portrait";
+import SettingsIcon from "@material-ui/icons/Settings";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
@@ -25,27 +26,33 @@ export const mainListItems = (
     </ListItemLink>
     <ListItemLink href="/categories">
       <ListItemIcon>
-      <CategoryIcon />
+        <CategoryIcon />
       </ListItemIcon>
       <ListItemText primary="Category" />
     </ListItemLink>
     <ListItemLink href="/ideas">
       <ListItemIcon>
-      <WbIncandescentIcon />
+        <WbIncandescentIcon />
       </ListItemIcon>
       <ListItemText primary="Idea" />
     </ListItemLink>
     <ListItemLink href="/members">
       <ListItemIcon>
-      <PersonIcon />
+        <PersonIcon />
       </ListItemIcon>
       <ListItemText primary="Member" />
     </ListItemLink>
     <ListItemLink href="/idea_member">
       <ListItemIcon>
-      <PortraitIcon />
+        <PortraitIcon />
       </ListItemIcon>
       <ListItemText primary="IdeaMember" />
+    </ListItemLink>
+    <ListItemLink href="/settings">
+      <ListItemIcon>
+        <SettingsIcon />
+      </ListItemIcon>
+      <ListItemText primary="Account" />
     </ListItemLink>
   </div>
 );
@@ -54,7 +61,7 @@ export const secondaryListItems = (
   <div>
     <ListItem button>
       <ListItemIcon>
-      <ExitToAppIcon />
+        <ExitToAppIcon />
       </ListItemIcon>
       <ListItemText primary="Sign Out" />
     </ListItem>
