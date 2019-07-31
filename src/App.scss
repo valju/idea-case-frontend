@@ -1,0 +1,347 @@
+$defaultBackground: #282c34;
+$defaultFont: -apple-system "Roboto", "Oxygen", "Droid Sans", "Helvetica Neue",
+	sans-serif;
+$defaultOrange: #ed8b00;
+
+$deepBlue: rgb(0, 87, 118);
+$lightblue: #eff4f7;
+
+.App {
+	font-family: $defaultFont;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+}
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
+
+body {
+	background-color: $lightblue !important;
+}
+
+* {
+	box-sizing: border-box;
+}
+header {
+	background-image: url("../src/assets/Nets_Logo_Pos_RGB.png");
+	background-size: 13%;
+	background-repeat: no-repeat;
+	background-position-x: 90%;
+	min-height: 100px;
+	margin: 15px 0px 15px 0px;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+
+	h2 {
+		justify-content: center;
+		display: inline-block;
+		color: rgb(99, 194, 250);
+		text-shadow: #a8a8a8 1px 1px 2px;
+	}
+}
+
+input[type="text"],
+input[type="password"] {
+	margin: 5px;
+	padding: 0 10px;
+	width: 200px;
+	height: 34px;
+	color: #404040;
+	background: white;
+	border: 1px solid;
+	font-family: $defaultFont;
+	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
+	border-radius: 0.5px;
+	outline: 5px solid #eff4f7;
+	-moz-outline-radius: 1px;
+
+	&:focus {
+		border-color: #7dc9e2;
+		outline-color: #dceefc;
+		outline-offset: 0;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: #8c8a8a;
+}
+
+input[type="submit"] {
+	padding: 0 18px;
+	height: 29px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #4e7c8f;
+	text-shadow: 0 1px #e3f1f1;
+	background: #cde5ef;
+	border: 1px solid;
+	border-color: #b4ccce #b3c0c8 #9eb9c2;
+	border-radius: 16px;
+	outline: 0;
+
+	&:active {
+		background: #cde5ef;
+		border-color: #9bc3d1 #b3c0c8 #b4ccce;
+	}
+}
+
+:-moz-placeholder {
+	color: #c9c9c9 !important;
+	font-size: 13px;
+}
+
+::-webkit-input-placeholder {
+	color: rgb(201, 200, 200);
+	font-size: 13px;
+}
+table {
+	margin: 0 auto;
+	min-width: 50px;
+	border-collapse: collapse;
+	color: rgb(71, 70, 70);
+
+	button {
+		max-height: 25px;
+		max-width: 80px;
+	}
+
+	ol,
+	li {
+		list-style: none;
+	}
+}
+
+.data-container {
+	padding-left: 72px;
+	padding-right: 10px;
+}
+@media only screen and (max-width: 1140px) and (min-width: 800px) {
+	.table-vendoritemmerchant {
+		right: 0;
+		margin-left: auto;
+	}
+	.table-container {
+		padding-left: 120px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	table {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	header {
+		max-width: calc(100%-200px);
+	}
+
+	.table,
+	.table-vendoritemmerchant {
+		overflow-x: auto;
+		table {
+			min-width: 500px;
+		}
+	}
+}
+
+@media all and (max-width: 480px) {
+	header {
+		//margin-left: 160px;
+		max-width: calc(100%-230px);
+	}
+	table {
+		//margin-left: 20%;
+	}
+	.skylight-dialog {
+		margin: 0 50 50 50;
+	}
+	.MuiButtonBase-root-54,
+	.MuiButton-root-130,
+	.MuiButton-contained-141,
+	.MuiButton-containedPrimary-142,
+	.MuiButton-raised-144,
+	.MuiButton-raisedPrimary-145 {
+		max-width: calc(100%-200px);
+	}
+}
+.MuiButtonBase-root-54,
+.MuiButton-root-130,
+.MuiButton-contained-141,
+.MuiButton-containedPrimary-142,
+.MuiButton-raised-144,
+.MuiButton-raisedPrimary-145 {
+	min-height: 55px;
+	justify-content: center;
+}
+
+footer {
+	p {
+		bottom: 0;
+		width: 100%;
+		height: 60px;
+		min-height: 5%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		font-size: calc(2px + 2vmin);
+		color: rgb(127, 151, 175);
+		text-shadow: #909090 1px 1px 1px;
+	}
+}
+
+button {
+	border-radius: 5%;
+	margin: 5px;
+	padding: 3 5 15 3px;
+	color: rgb(82, 84, 85);
+	background-color: whitesmoke;
+	width: 150px;
+	height: 40px;
+	letter-spacing: 0.5;
+	font-family: $defaultFont;
+	justify-content: center;
+	font-size: 16px;
+	font-weight: 300;
+}
+
+button:hover {
+	background-color: #c4d6fa;
+	color: rgb(68, 146, 248);
+}
+
+h2 {
+	color: rgb(157, 157, 160);
+}
+h2,
+h4 {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+h4 {
+	color: $deepBlue;
+}
+
+p {
+	text-align: center;
+	color: rgb(75, 75, 75);
+	animation: fadein 1s;
+	-moz-animation: fadein 1s; /* Firefox */
+	-webkit-animation: fadein 1s; /* Safari and Chrome */
+	-o-animation: fadein 1s; /* Opera */
+}
+
+th {
+	text-align: center;
+	animation: fadein 2s;
+	-moz-animation: fadein 2s; /* Firefox */
+	-webkit-animation: fadein 2s; /* Safari and Chrome */
+	-o-animation: fadein 2s; /* Opera */
+	color: #005776;
+	border: 1px solid #e9e8e8;
+}
+td {
+	border: 1px solid #e9e8e8;
+	text-align: left;
+	text-align: center;
+	max-height: 0px;
+	margin: 0px 3px 0px 3px;
+	padding: 0;
+	animation: fadein 2s;
+	-moz-animation: fadein 2s; /* Firefox */
+	-webkit-animation: fadein 2s; /* Safari and Chrome */
+	-o-animation: fadein 2s; /* Opera */
+}
+
+tr:nth-child(even) {
+	border-bottom: 1px solid rgb(209, 205, 205);
+	background-color: #d7eefb;
+	animation: fadein 2s;
+	-moz-animation: fadein 2s; /* Firefox */
+	-webkit-animation: fadein 2s; /* Safari and Chrome */
+	-o-animation: fadein 2s; /* Opera */
+}
+
+table {
+	a {
+		margin: 0px 3px 0px 3px;
+		color: $defaultOrange;
+		text-shadow: 1px 1px 1px #fcc06c;
+	}
+	a:hover {
+		color: #7d4b04;
+	}
+	text-align: center;
+}
+
+.vendorAdd {
+	min-height: 100px;
+	padding-bottom: 3%;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+}
+
+#click {
+	color: rgb(145, 145, 145);
+	font-weight: lighter;
+	font-style: italic;
+	font-size: 90%;
+}
+
+.merchantUpdateTable {
+	#terminals {
+		button {
+			float: right;
+		}
+		li {
+			text-align: left;
+			&:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+		}
+	}
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-moz-keyframes fadein {
+	/* Firefox */
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes fadein {
+	/* Safari and Chrome */
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-o-keyframes fadein {
+	/* Opera */
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

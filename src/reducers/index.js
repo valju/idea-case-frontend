@@ -1,19 +1,18 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
+import { DataTableReducer } from "react-redux-datatable";
 
-import categories from './categories';
-import ideas from './ideas';
-import members from './members';
-import comments from './comments';
-import ideaMembers from './ideaMembers';
+import vendors from "./vendors";
+import merchants from "./merchants";
+import terminals from "./terminals";
+import users from "./users";
 
-const rootReducer = () => (
-    combineReducers({
-        categories,
-        ideas,
-        members,
-        comments,
-        ideaMembers,
-    })
-);
+const rootReducer = () =>
+	combineReducers({
+		merchants,
+		terminals,
+		vendors,
+		users,
+		DataTableReducer,
+	});
 
 export default rootReducer;
