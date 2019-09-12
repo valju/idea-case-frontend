@@ -4,12 +4,13 @@ import { updateMerchant } from "../../actions/merchant";
 import { fetchAllVendors } from "../../actions/vendor";
 import { Link } from "react-router-dom";
 import { deleteTerminal } from "../../actions/terminal";
-
+import { fetchAllUsers } from "../../actions/user";
 import MerchantUpdateForm from "./MerchantUpdateForm";
 
 class MerchantUpdate extends Component {
 	componentDidMount() {
 		this.props.vendorsFetchAll();
+		this.props.usersFetchAll();
 	}
 	updateMerchantButtonClicked = merchantObject => {
 		const merchant = merchantObject;
@@ -29,6 +30,7 @@ class MerchantUpdate extends Component {
 					updateMerchantButtonClicked={this.updateMerchantButtonClicked}
 					vendors={this.props.vendors.vendorList}
 					delete={this.props.deleteTerminalLocal}
+					users={this.props.users}
 				/>
 				<p>
 					<Link to="/merchants">
@@ -46,6 +48,9 @@ const mapDispatchToProps = dispatch => ({
 	vendorsFetchAll: () => {
 		dispatch(fetchAllVendors());
 	},
+	usersFetchAll: () => {
+		dispatch(fetchAllUsers());
+	},
 
 	deleteTerminalLocal: id => {
 		dispatch(deleteTerminal(id));
@@ -55,6 +60,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
 	vendors: state.vendors,
 	terminals: state.terminals,
+	users: state.users,
 });
 
 export default connect(

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import util from "util";
+import ChangePassword from "../userComponents/ChangePassword";
 
 class MerchantUpdateForm extends Component {
 	constructor(props) {
@@ -22,13 +22,7 @@ class MerchantUpdateForm extends Component {
 				ecrVendor: this.props.merchant.ecrVendor,
 			},
 		});
-		console.dir(
-			`merchant object on component mount${util.inspect(
-				this.state.merchantObject
-			)}`
-		);
 	};
-
 	inputFieldValueChanged = event => {
 		this.setState({
 			merchantObject: {
@@ -63,6 +57,7 @@ class MerchantUpdateForm extends Component {
 							<tr>
 								<th>Merchant Name</th>
 								<th>Terminal(s)</th>
+								<th>Change password</th>
 								<th>Vendor</th>
 							</tr>
 						</thead>
@@ -92,6 +87,14 @@ class MerchantUpdateForm extends Component {
 									</ol>
 								</td>
 								<td>
+									{this.props.users.userList.map((u, i) => {
+										if (this.props.merchant._id === u.merchant) {
+											console.log(` userlist user ${u}`);
+											return <ChangePassword key={i} item={u} />;
+										}
+									})}
+								</td>
+								<td>
 									<select id="ecrVendor" onChange={this.inputFieldValueChanged}>
 										{this.props.vendors.map(item => (
 											<option key={item._id} value={item.id}>
@@ -111,4 +114,5 @@ class MerchantUpdateForm extends Component {
 		);
 	};
 }
+
 export default withRouter(MerchantUpdateForm);

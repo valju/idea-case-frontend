@@ -48,7 +48,7 @@ class PasswordUpdateForm extends Component {
 
 		const userObject = this.state.userObject;
 		this.props.updatePasswordButtonClicked(userObject);
-		this.props.history.push("/vendors");
+		this.props.history.push("/merchants");
 	};
 
 	render = () => {
