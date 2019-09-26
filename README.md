@@ -19,7 +19,7 @@ Then (if not already done) clone this repo while in that common root folder
  
 4. change/check the backend URL (apiRoot) to be e.g. **"http://localhost:8787/api"** (both 8787 at backend and this url in frontend) it's defined in **src/utils/api.config.js**
 5. `npm start`
-6. You should/might get the "TypeError: b is undefined" React error page it's because Redux store cannot be built, because Redux devtools are missing from your browser, and our code tries to wrap those tools around our store (see /src/index.js). 
+6. You should/might get the "TypeError: xxx is undefined" React error page it's because Redux store cannot be built, because Redux devtools are missing from your browser, and our code tries to wrap those tools around our store (see /src/index.js). 
 7. Add to Firefox the Add-On:    Redux DevTools by Zalmoxisus
 8. Add to Chrome the Extension:    Redux DevTools by remotedevio
 9. `npm start`
