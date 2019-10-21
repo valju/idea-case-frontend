@@ -10,14 +10,15 @@ class CategoryList extends Component {
   }
 
   render() {
-    console.log(this.props.categories)
+    //console.log(this.props.categories)
     return (
       <div>
         <h4>List of Categories</h4>
         <ol>
           {
             this.props.categories.categoryList.map((item) =>
-              <CategoryListItem key={item.id} item={item} delete={this.props.deleteCategoryLocal} />
+              <CategoryListItem key={item.id}
+              item={item} delete={this.props.deleteCategoryLocal} />
             )
           }
         </ol>

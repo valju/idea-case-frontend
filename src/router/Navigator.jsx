@@ -7,11 +7,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import { mainListItems, secondaryListItems } from './listItems';
 
 import classNames from 'classnames';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import { mainListItems, secondaryListItems } from './listItems';
 
 import Categories from '../views/categoryViews/Categories';
 import CategoryDetailsView from '../views/categoryViews/CategoryDetailsView';
@@ -126,8 +127,11 @@ class Navigator extends Component {
             </div>
 
             <Switch>
-              <Route exact path="/" component={HomeView} />
-              <Route exact path="/home" component={HomeView} />
+              { /* <Route exact path="/" component={HomeView} /> */ }
+              <Route exact path="/" component={Categories} />
+              { /* <Route exact path="/home" component={HomeView} /> */ }
+              <Route exact path="/home" component={Categories} />
+              <Route exact path="/homeview" component={HomeView} />
               <Route path="/categories" component={Categories} />
               <Route path="/members" component={Members} />
               <Route exact path="/member/:id" component={MemberDetailsView} />
@@ -139,11 +143,11 @@ class Navigator extends Component {
               <Route exact path="/idea/:id" component={IdeaDetailsView} />
               <Route exact path="/idea/update/:id" component={IdeaUpdateView} />
               <Route path="/comment_edit/:id" component={CommentEditView} />
-              <Route exact path="/idea_member" component={IdeaMembers} /> 
-              <Route exact path="/idea_member/:ideaId/:memberId" component={IdeaMemberDetailsView} /> 
-              <Route exact path="/idea_member/update/:ideaId/:memberId" component={IdeaMemberUpdateView} />                                                                                               
-              <Route exact path="/idea_member/update/idea/:ideaId/:memberId" component={IdeaUpdateOnly} />                                                                                               
-              <Route exact path="/idea_member/update/member/:ideaId/:memberId" component={MemberUpdateOnly} />                                                                                               
+              <Route exact path="/idea_member" component={IdeaMembers} />
+              <Route exact path="/idea_member/:ideaId/:memberId" component={IdeaMemberDetailsView} />
+              <Route exact path="/idea_member/update/:ideaId/:memberId" component={IdeaMemberUpdateView} />
+              <Route exact path="/idea_member/update/idea/:ideaId/:memberId" component={IdeaUpdateOnly} />
+              <Route exact path="/idea_member/update/member/:ideaId/:memberId" component={MemberUpdateOnly} />
               <Route render={ () => <h1>Page not found</h1>} />
             </Switch>
 

@@ -27,25 +27,25 @@ export const mainListItems = (
       <ListItemIcon>
       <CategoryIcon />
       </ListItemIcon>
-      <ListItemText primary="Category" />
+      <ListItemText primary="Categories" />
     </ListItemLink>
     <ListItemLink href="/ideas">
       <ListItemIcon>
       <WbIncandescentIcon />
       </ListItemIcon>
-      <ListItemText primary="Idea" />
+      <ListItemText primary="Ideas" />
     </ListItemLink>
     <ListItemLink href="/members">
       <ListItemIcon>
       <PersonIcon />
       </ListItemIcon>
-      <ListItemText primary="Member" />
+      <ListItemText primary="Members" />
     </ListItemLink>
     <ListItemLink href="/idea_member">
       <ListItemIcon>
       <PortraitIcon />
       </ListItemIcon>
-      <ListItemText primary="IdeaMember" />
+      <ListItemText primary="Idea Members" />
     </ListItemLink>
   </div>
 );

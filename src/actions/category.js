@@ -45,8 +45,9 @@ export function fetchAllCategories() {
 };
 
 // Category ADD
-export const categoryAdd_REQ = () => ({
+export const categoryAdd_REQ = (category) => ({
   type: ActionTypes.CATEGORY_ADD_REQ,
+  category: category,
 });
 export const categoryAdd_OK = () => ({
   type: ActionTypes.CATEGORY_ADD_OK,
@@ -58,7 +59,7 @@ export const categoryAdd_X = () => ({
 export function addCategory(category) {
   return async (dispatch, getState) => {
 
-    dispatch(categoryAdd_REQ());
+    dispatch(categoryAdd_REQ(category));
 
     // Here would be some async AJAX call with await...
     // ... or some promises or so
@@ -86,8 +87,9 @@ export function addCategory(category) {
 };
 
 // Category DELETE
-export const categoryDelete_REQ = () => ({
+export const categoryDelete_REQ = (id) => ({
   type: ActionTypes.CATEGORY_DELETE_REQ,
+  id: id,
 });
 export const categoryDelete_OK = () => ({
   type: ActionTypes.CATEGORY_DELETE_OK,
@@ -127,8 +129,9 @@ export function deleteCategory(id) {
 };
 
 // Category GET One By Id
-export const categoryGetById_REQ = () => ({
+export const categoryGetById_REQ = (id) => ({
   type: ActionTypes.CATEGORY_GETBYID_REQ,
+  id: id,
 });
 export const categoryGetById_OK = (category) => ({
   type: ActionTypes.CATEGORY_GETBYID_OK,
@@ -140,7 +143,7 @@ export const categoryGetById_X = () => ({
 
 export function getCategory(id) {
   return async (dispatch, getState) => {
-    dispatch(categoryGetById_REQ());
+    dispatch(categoryGetById_REQ(id));
     console.dir("Get category with this id: " + id);
 
     // Here would be some async AJAX call with await...
@@ -166,9 +169,10 @@ export function getCategory(id) {
   };
 }
 
-//Category UPDATE One By Id
-export const categoryUpdate_REQ = () => ({
+//Category UPDATE that One object
+export const categoryUpdate_REQ = (category) => ({
   type: ActionTypes.CATEGORY_UPDATE_REQ,
+  category: category,
 });
 export const categoryUpdate_OK = (category) => ({
   type: ActionTypes.CATEGORY_UPDATE_OK,
@@ -180,7 +184,7 @@ export const categoryUpdate_X = () => ({
 
 export function updateCategory(category) {
   return async (dispatch, getState) => {
-    dispatch(categoryUpdate_REQ());
+    dispatch(categoryUpdate_REQ(category));
     console.dir(category);
 
     // Here would be some async AJAX call with await...
