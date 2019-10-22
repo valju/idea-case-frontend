@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {categoriesSearchByKeyword} from '../../actions/category';
+import CategoryItem from '../../components/categoryComponents/CategoryItem';
 
 class CategoriesIntellingentSearch extends Component {
 
@@ -19,7 +20,7 @@ class CategoriesIntellingentSearch extends Component {
         {
 
           categorySearchList.map( (item, index) => (
-              item.name + " " + item.description +" <br />"
+              <CategoryItem item={item} />
             )
 
           )

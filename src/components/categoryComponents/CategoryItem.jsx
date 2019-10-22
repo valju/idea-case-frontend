@@ -12,6 +12,7 @@ export default class CategoryItem extends Component {
         <span>
           {`${this.props.item.description}`}
         </span>
+        <hr />
       </div>
     );
   }
