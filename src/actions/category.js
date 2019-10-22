@@ -44,6 +44,45 @@ export function fetchAllCategories() {
   }
 };
 
+// CATEGORIES_SEARCH_REQ
+export const categoriesSearch_REQ = (keyword) => ({
+  type: ActionTypes.CATEGORIES_SEARCH_REQ,
+  keyword: keyword,
+});
+export const categoriesSearch_OK = (categoryList) => ({
+  type: ActionTypes.CATEGORIES_SEARCH_OK,
+  categoryList: categoryList
+});
+export const categoriesSearch_X = () => ({
+  type: ActionTypes.CATEGORIES_SEARCH_X,
+});
+
+export function categoriesSearchByKeyword(keyword) {
+  return async (dispatch, getState) => {
+
+    dispatch(categoriesSearch_REQ(keyword));
+
+    const ajaxRequest = {
+      method: 'get',
+      url: API_ROOT + `/category/search/${keyword}`,
+    };
+
+    axios(ajaxRequest)
+      .then((response) => {
+        dispatch(categoriesSearch_OK(response.data));
+      })
+      .catch((error) => {
+        console.error("Error: " + error);
+        dispatch(categoriesSearch_X());
+      })
+      .then(() => {
+        return {
+          type: null
+        }; // 'Empty' action object
+      });
+  }
+};
+
 // Category ADD
 export const categoryAdd_REQ = (category) => ({
   type: ActionTypes.CATEGORY_ADD_REQ,

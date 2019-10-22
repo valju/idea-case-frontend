@@ -4,6 +4,7 @@ import ActionTypes from '../actions/ActionTypes';
 export const initialState = {
     isLoading: false,
     categoryList: [],
+    categorySearchList: [],
     categoryIdsFound: null,
     categoryCurrent: null,
 };
@@ -23,6 +24,23 @@ export default function categories(state = initialState, action) {
                 isLoading: false,
             };
         case ActionTypes.CATEGORIES_ALL_X:
+            return {
+                ...state,
+                isLoading: false,
+            };
+
+        case ActionTypes.CATEGORIES_SEARCH_REQ:
+            return {
+                ...state,
+                isLoading: true,
+            };
+        case ActionTypes.CATEGORIES_SEARCH_OK:
+            return {
+                ...state,
+                categorySearchList: action.categoryList,
+                isLoading: false,
+            };
+        case ActionTypes.CATEGORIES_SEARCH_X:
             return {
                 ...state,
                 isLoading: false,
@@ -78,7 +96,7 @@ export default function categories(state = initialState, action) {
               ...state,
               isLoading: false
             };
-      
+
 
         /*
         case ActionTypes.CATEGORY_RANDOMIZED_REQ:
@@ -98,7 +116,7 @@ export default function categories(state = initialState, action) {
                 isLoading: false,
             };
         */
-       
+
         case null:
             return state;
 
