@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {categoriesSearchByKeyword} from '../../actions/category';
-import CategoryItem from '../../components/categoryComponents/CategoryItem';
+import CategoryItem from './CategoryItem';
+
+// One of the simplest possible sensible Redux-connected React examples:
 
 class CategoriesIntellingentSearch extends Component {
 
