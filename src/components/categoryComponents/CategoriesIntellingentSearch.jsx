@@ -9,7 +9,7 @@ import CategoryItem from './CategoryItem';
 class CategoriesIntellingentSearch extends Component {
 
   componentDidMount() {
-    let keyword = "Training";
+    let keyword = "Training";    // Hard-coded keyword in simplest version
     this.props.categoriesSearchByKeywordLocal(keyword);
   }
 
@@ -20,15 +20,11 @@ class CategoriesIntellingentSearch extends Component {
         <h2>Found Categories based on keyword</h2>
         <p>
         {
-
-          categorySearchList.map( (item, index) => (
-              <CategoryItem item={item} />
-            )
-
+          categorySearchList.map( (item, index) =>
+              ( <CategoryItem item={item} /> )
           )
         }
         </p>
-
       </div>
     );
   }
