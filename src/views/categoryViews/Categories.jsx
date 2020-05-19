@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CategoryAdd from '../../components/categoryComponents/CategoryAdd';
-import CategoryList from '../../components/categoryComponents/CategoryList';
+//import CategoryList from '../../components/categoryComponents/CategoryList';
+import CategoryListHooks from '../../components/categoryComponents/CategoryListHooks';
 import CategoryRandomized from '../../components/categoryComponents/CategoryRandomized';
 import CategoriesIntellingentSearch from '../../components/categoryComponents/CategoriesIntellingentSearch';
 
@@ -13,7 +14,7 @@ export default class Categories extends Component {
         <CategoriesIntellingentSearch />
         <CategoryRandomized />
         <CategoryAdd />
-        <CategoryList />
+        <CategoryListHooks />
       </div>
     );
   }
