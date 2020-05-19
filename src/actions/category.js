@@ -4,7 +4,7 @@ import {
   API_ROOT
 } from '../constants/AppConstants';
 
-// ACTION CREATORS (Action object creator functions)
+// ACTION CREATORS (Action object creator functions, standard way to create actions)
 
 // Categories SHOW ALL
 export const categoriesAll_REQ = () => ({
@@ -18,6 +18,7 @@ export const categoriesAll_X = () => ({
   type: ActionTypes.CATEGORIES_ALL_X,
 });
 
+// action helper function, ajax+redux process function
 export function fetchAllCategories() {
   return async (dispatch, getState) => {
 
