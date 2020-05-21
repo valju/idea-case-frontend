@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -17,36 +18,36 @@ function ListItemLink(props) {
 
 export const mainListItems = (
   <div>
-    <ListItemLink href="/home">
+    <Link to="/home">
       <ListItemIcon>
         <HomeIcon />
       </ListItemIcon>
       <ListItemText primary="Home" />
-    </ListItemLink>
-    <ListItemLink href="/categories">
+    </Link>
+    <Link to="/categories">
       <ListItemIcon>
       <CategoryIcon />
       </ListItemIcon>
       <ListItemText primary="Categories" />
-    </ListItemLink>
-    <ListItemLink href="/ideas">
+    </Link>
+    <Link to="/ideas">
       <ListItemIcon>
       <WbIncandescentIcon />
       </ListItemIcon>
       <ListItemText primary="Ideas" />
-    </ListItemLink>
-    <ListItemLink href="/members">
+    </Link>
+    <Link to="/members">
       <ListItemIcon>
       <PersonIcon />
-      </ListItemIcon>
+      </ListItemIcon>npm
       <ListItemText primary="Members" />
-    </ListItemLink>
-    <ListItemLink href="/idea_member">
+    </Link>
+    <Link to="/idea_member">
       <ListItemIcon>
       <PortraitIcon />
       </ListItemIcon>
       <ListItemText primary="Idea Members" />
-    </ListItemLink>
+    </Link>
   </div>
 );
 
