@@ -39,7 +39,7 @@ export const mainListItems = (
     <Link to="/members">
       <ListItemIcon>
       <PersonIcon />
-      </ListItemIcon>npm
+      </ListItemIcon>
       <ListItemText primary="Members" />
     </Link>
     <Link to="/idea_member">
