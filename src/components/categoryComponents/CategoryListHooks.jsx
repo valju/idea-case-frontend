@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { fetchAllCategories, deleteCategory } from '../../actions/category';
 import CategoryListItem from './CategoryListItem';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,7 +14,7 @@ export default function CategoryList() {
   }
 
   // componentDidMount replaced with useEffect, see also the dispatch using useDispatch
-  useEffect(()=>dispatch(fetchAllCategories()),[]);
+  useEffect(()=>{dispatch(fetchAllCategories())},[dispatch]);
 
   return (
       <div>

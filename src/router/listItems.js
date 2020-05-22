@@ -12,9 +12,11 @@ import PersonIcon from '@material-ui/icons/Person';
 import PortraitIcon from '@material-ui/icons/Portrait';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
+/*
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
+*/
 
 export const mainListItems = (
   <div>
@@ -29,6 +31,12 @@ export const mainListItems = (
       <CategoryIcon />
       </ListItemIcon>
       <ListItemText primary="Categories" />
+    </Link>
+    <Link to="/categories2">
+      <ListItemIcon>
+      <CategoryIcon />
+      </ListItemIcon>
+      <ListItemText primary="Categories2 -Traditional" />
     </Link>
     <Link to="/ideas">
       <ListItemIcon>

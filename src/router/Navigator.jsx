@@ -15,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { mainListItems, secondaryListItems } from './listItems';
 
 import Categories from '../views/categoryViews/Categories';
+import Categories2 from '../views/categoryViews/Categories2';
 import CategoryDetailsView from '../views/categoryViews/CategoryDetailsView';
 import CategoryUpdateView from '../views/categoryViews/CategoryUpdateView';
 import Ideas from '../views/ideaViews/Ideas';
@@ -128,11 +129,12 @@ class Navigator extends Component {
 
             <Switch>
               { /* <Route exact path="/" component={HomeView} /> */ }
-              <Route exact path="/" component={Categories} />
+              { /* <Route exact path="/" component={Categories} /> */ }
               { /* <Route exact path="/home" component={HomeView} /> */ }
-              <Route exact path="/home" component={Categories} />
-              <Route exact path="/homeview" component={HomeView} />
-              <Route path="/categories" component={Categories} />
+              { /* <Route exact path="/home" component={Categories} /> */ }
+              <Route exact path="/home" component={HomeView} />
+              <Route exact path="/categories" component={Categories} />
+              <Route path="/categories2" component={Categories2} />
               <Route path="/members" component={Members} />
               <Route exact path="/member/:id" component={MemberDetailsView} />
               <Route exact path="/member/update/:id" component={MemberUpdateView} />
