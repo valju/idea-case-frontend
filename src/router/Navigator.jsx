@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, /*MuiThemeProvider*/ } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+//import { useTheme } from '@material-ui/core/styles';
+import theme from '../stylings/theme/theme';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -33,12 +35,14 @@ import MemberUpdateOnly from '../components/ideaMemberComponents/MemberUpdateOnl
 import HomeView from '../views/HomeView';
 import MemberIdeaCommentView from '../views/memberViews/MemberIdeaCommentView';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     display: 'flex',
+    //color: theme.palette.primary.main,
   },
   toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
+    paddingRight: 24, // keep right padding when drawer closed,
+    //color: theme.palette.primary.main,
   },
   toolbarIcon: {
     display: 'flex',
@@ -49,6 +53,8 @@ const styles = theme => ({
   },
   title: {
     flexGrow: 1,
+    //...theme.mixins.title,
+    //color: theme.palette.primary.main,
   },
   drawerPaper: {
     overflowX: 'hidden',
@@ -73,7 +79,7 @@ const styles = theme => ({
     },
   },
   h4: {
-
+    //color: theme.palette.primary.main,
   }
 });
 

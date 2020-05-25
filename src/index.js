@@ -5,7 +5,14 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import rootReducer from './reducers';
 import thunk from 'redux-thunk';
 
-import './index.css';
+//import './index.css';
+//import CssBaseline from '@material-ui/core/CssBaseline';
+import { CssBaseline } from '@material-ui/core';
+import theme from "./stylings/theme/theme";
+
+import {ThemeProvider} from '@material-ui/core/styles';
+
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -17,10 +24,22 @@ const store = createStore(
     )
  );
 
-ReactDOM.render(
+
+
+function Index () {
+  return (
     <Provider store={store}>
-        <App />
-    </Provider>,
+        <ThemeProvider theme={theme} >
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+    </Provider>
+  );
+}
+
+ReactDOM.render(
+    <Index />
+    ,
     document.getElementById('root')
 );
 

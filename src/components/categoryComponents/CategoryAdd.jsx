@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCategory } from '../../actions/category';
+import { Button } from '@material-ui/core';
 
 class CategoryAdd extends Component {
 
@@ -40,7 +41,7 @@ class CategoryAdd extends Component {
           Name: <input id="name" type="text" onChange={this.inputFieldValueChanged} value={this.state.newCategoryObject.name} /><br />
           Budget (&euro;): <input id="budgetLimit" type="number" onChange={this.inputFieldValueChanged} value={this.state.newCategoryObject.budgetLimit}  /><br />
           Description: <input id="description" type="text" size="50" onChange={this.inputFieldValueChanged} value={this.state.newCategoryObject.description} /><br />
-          <button type="button" onClick={this.addCategory}>ADD NEW CATEGORY</button>
+          <Button className="ourButton" type="button" onClick={this.addCategory}>ADD NEW CATEGORY</Button>
         </p>
       </div>
     );
